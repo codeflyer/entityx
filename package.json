@@ -1,0 +1,35 @@
+{
+    "name" : "entityx",
+    "version" : "0.1.0",
+    "description" : "A framework for the management of DDD models",
+    "main" : "lib/index.js",
+    "scripts" : {
+        "test" : "make test"
+    },
+    "private" : false,
+    "keywords" : [
+        "ddd",
+        "mongodb"
+    ],
+    "repository" : {
+        "type" : "git",
+        "url" : "git://github.com/codeflyer/entityx.git"
+    },
+    "author" : "Davide Fiorello",
+    "license" : "BSD-2-Clause",
+    "dependencies" : {
+        "async" : "^0.8.0",
+        "mongodb" : "^1.4.3",
+        "q" : "^1.0.1"
+    },
+    "devDependencies" : {
+        "grunt" : "^0.4.4",
+        "gulp" : "^3.6.2",
+        "gulp-jshint" : "^1.5.5",
+        "istanbul" : "^0.2.8",
+        "mocha" : "^1.18.2",
+        "pow-mongodb-fixtures" : "^0.10.0",
+        "should" : "^3.3.1",
+        "sinon" : "^1.9.1"
+    }
+}
