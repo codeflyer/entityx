@@ -4,7 +4,7 @@ var InheritNoTsDriver = require('./../classesTest/lib/repositories/InheritNoTsDr
 var MongoClient = require('mongodb').MongoClient;
 var connectionManager = require('../../lib/services/ConnectionManager');
 
-describe("core-object: Driver Exists", function() {
+describe("Driver Exists", function() {
     before(function(done) {
         var dbName = "entityxTest";
         fixtures = require('pow-mongodb-fixtures').connect(dbName);

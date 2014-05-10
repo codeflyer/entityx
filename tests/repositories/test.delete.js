@@ -5,7 +5,7 @@ var MongoClient = require('mongodb').MongoClient;
 var async = require('async');
 var connectionManager = require('../../lib/services/ConnectionManager');
 
-describe("core-object: Object", function() {
+describe("Driver operation: Delete", function() {
     before(function(done) {
         var dbName = "entityxTest";
         fixtures = require('pow-mongodb-fixtures').connect(dbName);

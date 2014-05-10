@@ -1,8 +1,5 @@
 require('should');
-var sinon = require('sinon');
 var ObjectID = require('mongodb').ObjectID;
-
-var MongoDB = require('./../../lib/repositories/MongoDB');
 var MongoDBSequence = require('./../../lib/repositories/MongoDBSequence');
 
 describe("Repositories, MongoDBSequences: Constructor", function() {
@@ -10,7 +7,7 @@ describe("Repositories, MongoDBSequences: Constructor", function() {
 
     it("Empty params in constructor", function() {
         (function() {
-            new MongoDBSequence()
+            new MongoDBSequence();
         }).should.throw("Driver initialization require params");
     });
 
