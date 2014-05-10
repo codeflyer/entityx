@@ -4,7 +4,7 @@ var path = require('path');
 var MongoClient = require('mongodb').MongoClient;
 var connectionManager = require('../../lib/services/ConnectionManager');
 
-describe("core-object: Factory", function() {
+describe("Factory", function() {
     before(function(done) {
         var dbName = "entityxTest";
         fixtures = require('pow-mongodb-fixtures').connect(dbName);

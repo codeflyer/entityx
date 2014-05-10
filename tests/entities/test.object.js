@@ -1,7 +1,7 @@
 var should = require('should');
 var CoreObjectInherit = require('./../classesTest/lib/entities/CoreObjectInherit');
 
-describe("core-object: Object", function() {
+describe("Object", function() {
 
     it("Test set/get", function(done) {
         var obj = new CoreObjectInherit();
