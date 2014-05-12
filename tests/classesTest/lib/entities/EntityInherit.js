@@ -1,8 +1,8 @@
 var util = require("util");
 var Entity = require('./../../../../lib/entities/Entity');
 
-var EntityInherit = function(id, details) {
-    Entity.call(this, id, details);
+var EntityInherit = function() {
+    Entity.call(this, {'useTimestamp' : true});
 };
 util.inherits(EntityInherit, Entity);
 
