@@ -1,6 +1,6 @@
 {
     "name" : "entityx",
-    "version" : "0.1.1",
+    "version" : "0.1.2",
     "description" : "A framework for the management of DDD models",
     "main" : "lib/index.js",
     "scripts" : {
