@@ -1,9 +1,7 @@
-var should = require('should');
+require('should');
 var Factory = require('../lib/Factory');
 var path = require('path');
-var ObjectID = require('mongodb').ObjectID;
 
-var sinon = require('sinon');
 
 
 describe("Factory: getDriver", function() {
@@ -41,7 +39,7 @@ describe("Factory: getDriver", function() {
         var rootPath = path.join(__dirname, '..');
         Factory.setApplicationRoot(rootPath);
         (function() {
-            var driver1 = Factory.getDriver('TestModule2/Inherit', 4);
+            Factory.getDriver('TestModule2/Inherit', 4);
         }).should.throw('Module [TestModule2] not initialized');
     });
 });

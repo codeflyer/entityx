@@ -1,4 +1,4 @@
-var should = require('should');
+require('should');
 var Factory = require('../lib/Factory');
 var path = require('path');
 var MongoClient = require('mongodb').MongoClient;
@@ -23,8 +23,4 @@ describe("Factory", function() {
             fixtures.load(path.join(__dirname,'./fixtures/users.js'), done);
         });
     });
-
-
-
-
 });

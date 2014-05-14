@@ -3,7 +3,7 @@ var path = require('path');
 var ObjectID = require('mongodb').ObjectID;
 
 var sinon = require('sinon');
-var should = require('should');
+require('should');
 
 
 describe("Factory: getModel", function() {
