@@ -22,13 +22,14 @@ describe("Repositories, MongoDBObjectID: Constructor", function() {
     });
 
     it("Identifier string (not valid)", function() {
-        var driver = new MongoDBObjectID({'collectionName' : 'coll_name'}, 'hello');
-        (driver.getId() === null).should.be.true;
+        (function() {
+            new MongoDBObjectID({'collectionName' : 'coll_name'}, 'hello');
+        }).should.throw("Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters");
     });
 
     it("Identifier integer", function() {
         var driver = new MongoDBObjectID({'collectionName' : 'coll_name'}, 10);
-        (driver.getId() === null).should.be.true;
+        (driver.getId() === null).should.be.false;
     });
 
     it("Identifier ObjectID", function() {
