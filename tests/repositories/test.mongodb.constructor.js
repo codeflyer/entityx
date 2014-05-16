@@ -75,6 +75,5 @@ describe("Repositories, MongoDB: Constructor", function() {
         }).should.not.throw();
 
         (driver._id === null).should.be.true;
-
     });
 });
