@@ -18,6 +18,7 @@ describe("Factory", function() {
     });
 
     beforeEach(function(done) {
+        Factory._reset();
         Factory.reset();
         fixtures.clear(function(err) {
             fixtures.load(path.join(__dirname,'./fixtures/users.js'), done);
