@@ -2,8 +2,8 @@ var should = require('should');
 var InheritDriver = require('./../classesTest/lib/repositories/InheritDriver');
 var InheritNoTsDriver = require('./../classesTest/lib/repositories/InheritNoTsDriver');
 var MongoClient = require('mongodb').MongoClient;
-var async = require('async');
 var connectionManager = require('../../lib/services/ConnectionManager');
+var Q = require('q');
 
 describe("Driver operation: Delete", function() {
     before(function(done) {
@@ -27,110 +27,61 @@ describe("Driver operation: Delete", function() {
     });
 
     it("Test delete noTS", function(done) {
-        async.series([
-            function(callback) {
-                var driver = new InheritNoTsDriver(1);
-                driver.exists(function(err, result) {
-                        if(err) {
-                            return callback(err);
-                        }
-                        should.strictEqual(result, true);
-                        callback();
-                    }
-                );
-            },
-            function(callback) {
-                var driver = new InheritNoTsDriver(1);
-                driver.delete(function(err) {
-                        if(err) {
-                            return callback(err);
-                        }
-                        callback();
-                    }
-                );
-            },
-            function(callback) {
-                var driver = new InheritNoTsDriver(1);
-                driver.exists(function(err, result) {
-                        if(err) {
-                            return callback(err);
-                        }
-                        should.strictEqual(result, false);
-                        callback();
-                    }
-                );
-            },
-            function(callback) {
-                var driver = new InheritNoTsDriver(1);
-                driver.getCollection(driver.collectionName).findOne({'_id' : 1}, function(err, result) {
-                        if(err) {
-                            return callback(err);
-                        }
-                        should.strictEqual(result, null);
-                        callback();
-                    }
-                );
+        var driver = new InheritNoTsDriver(1);
+        Q.ninvoke(driver, 'exists').then(
+            function(result) {
+                should.strictEqual(result, true);
+                return Q();
             }
-
-        ], function(err) {
-            if(err) {
-                return done(err);
+        ).then(function() {
+                var driver = new InheritNoTsDriver(1);
+                return Q.ninvoke(driver, 'delete')
             }
-            done();
-        });
+        ).then(function() {
+                var driver = new InheritNoTsDriver(1);
+                return Q.ninvoke(driver, 'exists');
+            }
+        ).then(function(result) {
+                should.strictEqual(result, false);
+                var driver = new InheritNoTsDriver(1);
+                return Q.ninvoke(driver.getCollection(driver.collectionName), 'findOne', {'_id' : 1});
+            }
+        ).then(function(result) {
+                should.strictEqual(result, null);
+                done();
+            })
     });
 
     it("Test delete TS", function(done) {
-        async.series([
-            function(callback) {
-                var driver = new InheritDriver(1);
-                driver.exists(function(err, result) {
-                        if(err) {
-                            return callback(err);
-                        }
-                        should.strictEqual(result, true);
-                        callback();
-                    }
-                );
-            },
-            function(callback) {
-                var driver = new InheritDriver(1);
-                driver.delete(function(err, result) {
-                        if(err) {
-                            return callback(err);
-                        }
-                        callback();
-                    }
-                );
-            },
-            function(callback) {
-                var driver = new InheritDriver(1);
-                driver.exists(function(err, result) {
-                        if(err) {
-                            return callback(err);
-                        }
-                        should.strictEqual(result, false);
-                        callback();
-                    }
-                );
-            },
-            function(callback) {
-                var driver = new InheritDriver(1);
-                driver.getCollection(driver.collectionName).findOne({'_id' : 1},
-                    function(err, result) {
-                        if(err) {
-                            return callback(err);
-                        }
-                        should.notStrictEqual(result, null);
-                        callback();
-                    }
-                );
+
+        var driver = new InheritDriver(1);
+        Q.ninvoke(driver, 'exists').then(
+            function(result) {
+                should.strictEqual(result, true);
+                return Q();
             }
-        ], function(err, result) {
-            if(err) {
-                return done(err);
+        ).then(function() {
+                var driver = new InheritDriver(1);
+                return Q.ninvoke(driver, 'delete', true)
             }
-            done();
-        });
+        ).then(function() {
+                var driver = new InheritDriver(1);
+                return Q.ninvoke(driver, 'exists');
+            }
+        ).then(function(result) {
+                should.strictEqual(result, false);
+                var driver = new InheritDriver(1);
+                return Q.ninvoke(driver.getCollection(driver.collectionName), 'findOne', {'_id' : 1});
+            }
+        ).then(
+            function(result) {
+                should.strictEqual(result, null);
+                done();
+            }
+        ).catch(function(err) {
+                done(err);
+            })
+
     });
-});
+})
+;
