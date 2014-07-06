@@ -9,4 +9,7 @@ cover:
 lint:
 	./node_modules/gulp/bin/gulp.js lint
 
+jscs:
+	./node_modules/gulp/bin/gulp.js jscs
+
 .PHONY: test

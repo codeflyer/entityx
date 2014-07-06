@@ -1,6 +1,6 @@
 {
     "name" : "entityx",
-    "version" : "0.1.6",
+    "version" : "0.1.7",
     "description" : "A framework for the management of DDD models",
     "main" : "lib/index.js",
     "scripts" : {
@@ -18,13 +18,13 @@
     "author" : "Davide Fiorello",
     "license" : "BSD-2-Clause",
     "dependencies" : {
-        "async" : "^0.8.0",
         "mongodb" : "^1.4.3",
         "q" : "^1.0.1"
     },
     "devDependencies" : {
-        "grunt" : "^0.4.4",
+        "grunt" : "^0.4.5",
         "gulp" : "^3.6.2",
+        "gulp-jscs" : "^0.5.0",
         "gulp-jshint" : "^1.5.5",
         "istanbul" : "^0.2.8",
         "mocha" : "^1.18.2",

@@ -1,5 +1,6 @@
-var jshint = require('gulp-jshint');
 var gulp   = require('gulp');
+var jshint = require('gulp-jshint');
+var jscs = require('gulp-jscs');
 
 var jshintOptions = {
     camelcase : true,
@@ -19,4 +20,10 @@ gulp.task('lint', function() {
     return gulp.src(['./lib/*.js', './tests/**/test.*.js'])
         .pipe(jshint(jshintOptions))
         .pipe(jshint.reporter('default'));
+});
+
+
+gulp.task('jscs', function () {
+    return gulp.src(['./lib/*.js', './tests/**/test.*.js'])
+        .pipe(jscs());
 });
