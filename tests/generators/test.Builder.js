@@ -3,7 +3,7 @@ var util = require("util");
 var Entity = require('../../lib/entities/Entity');
 var Builder = require('../../lib/generators/Builder');
 
-describe.only("generators/Builder", function () {
+describe("generators/Builder", function () {
 
     it("BuildSimpleClass (get/set)", function (done) {
         var define = require('../structs/simple.json');
@@ -25,27 +25,27 @@ describe.only("generators/Builder", function () {
         });
     });
 
-    it("BuildSimpleClass (load)", function (done) {
-        var define = require('../structs/simple.json');
-
-        function Simple() {
-            Entity.call(this, {'useTimestamp': true});
-        }
-
-        util.inherits(Simple, Entity);
-
-        Builder.build(Simple, define);
-
-        var instance = new Simple();
-        instance.load({'field1': 'hello'}).then(function (result) {
-            return instance.getField1();
-        }).then(function (result) {
-                try {
-                    result.should.be.equal('hello');
-                    done();
-                } catch(e) {done(e)}
-        }).catch(function (e) {
-            done(e);
-        });
-    });
+    //it("BuildSimpleClass (load)", function (done) {
+    //    var define = require('../structs/simple.json');
+    //
+    //    function Simple() {
+    //        Entity.call(this, {'useTimestamp': true});
+    //    }
+    //
+    //    util.inherits(Simple, Entity);
+    //
+    //    Builder.build(Simple, define);
+    //
+    //    var instance = new Simple();
+    //    instance.load({'field1': 'hello'}).then(function (result) {
+    //        return instance.getField1();
+    //    }).then(function (result) {
+    //            try {
+    //                result.should.be.equal('hello');
+    //                done();
+    //            } catch(e) {done(e)}
+    //    }).catch(function (e) {
+    //        done(e);
+    //    });
+    //});
 });
