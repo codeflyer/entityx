@@ -18,7 +18,7 @@ EntityInherit.prototype._getDriver = function() {
 
 EntityInherit.prototype._loadDetails = function(details, callback) {
     this._setData('name', details.name);
-    callback(null, details);
+    return details;
 };
 
 EntityInherit.prototype.setName = function(name) {

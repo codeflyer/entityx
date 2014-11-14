@@ -1,0 +1,17 @@
+{
+    "module" : "FakeModule",
+    "className" : "Simple",
+    "collectionName" : "fake_simple",
+    "attributes" : [
+        {
+            "name" : "field1",
+            "type" : "string",
+            "accessors" : ["get", "set", "getSync"]
+        },
+        {
+            "name" : "field2",
+            "type" : "number",
+            "accessors" : ["get", "set", "getSync"]
+        }
+    ]
+}
