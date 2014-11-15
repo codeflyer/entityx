@@ -1,10 +1,9 @@
+var should = require('should');
 var EntityX = require('../lib/EntityX');
 var Factory = require('../lib/Factory');
 var path = require('path');
-require('should');
 
-describe('Factory: isModuleSet', function() {
-
+describe('EntityX: ModuleList', function() {
   var rootPath = path.join(__dirname, '..');
 
   beforeEach(function() {
@@ -12,14 +11,16 @@ describe('Factory: isModuleSet', function() {
     Factory.reset();
   });
 
-  it('Test isModuleSet (false)', function() {
+  it('GetModule list (empty)', function() {
     EntityX.setApplicationRoot(rootPath);
-    EntityX.isModuleSet('TestModule').should.be.false;
+    EntityX.getRegisteredModulesName().should.be.eql([]);
   });
 
-  it('Test isModuleSet (true)', function() {
+  it('GetModule list (not empty)', function() {
     EntityX.setApplicationRoot(rootPath);
     EntityX.addModule('tests/classesTest');
-    EntityX.isModuleSet('TestModule').should.be.true;
+    EntityX.getRegisteredModulesName().length.should.be.eql(1);
+    EntityX.getRegisteredModulesName().should.be.eql(['TestModule']);
   });
+
 });
