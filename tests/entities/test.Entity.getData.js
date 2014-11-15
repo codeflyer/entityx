@@ -1,7 +1,6 @@
 require('should');
 var path = require('path');
 var EntityX = require('./../../lib/EntityX');
-var Factory = require('../../lib/Factory');
 var Entity = require('./../../lib/entities/Entity');
 
 describe('Object: getData', function() {

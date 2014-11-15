@@ -1,7 +1,6 @@
 require('should');
 var path = require('path');
 var EntityX = require('../../lib/EntityX');
-var Factory = require('../../lib/Factory');
 var CoreObject = require('./../../lib/entities/CoreObject');
 var EntityInherit = require('./../classesTest/lib/entities/EntityInherit');
 

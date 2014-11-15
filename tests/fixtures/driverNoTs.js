@@ -1,3 +1,4 @@
+/*jshint camelcase: false */
 // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
 exports.test_driver_no_ts = [
   {'_id': 1, 'name': 'test 1'},

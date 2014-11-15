@@ -1,4 +1,4 @@
-var should = require('should');
+require('should');
 var InheritDriver = require('./../classesTest/lib/repositories/InheritDriver');
 var InheritNoTsDriver =
     require('./../classesTest/lib/repositories/InheritNoTsDriver');
@@ -31,28 +31,29 @@ describe('Driver operation: Delete', function() {
     var driver = new InheritNoTsDriver(1);
     Q.ninvoke(driver, 'exists').then(
         function(result) {
-          should.strictEqual(result, true);
+          result.should.be.true;
+          /* jshint newcap:false */
           return Q();
         }
     ).then(function() {
           var driver = new InheritNoTsDriver(1);
-          return Q.ninvoke(driver, 'delete')
+          return Q.ninvoke(driver, 'delete');
         }
     ).then(function() {
           var driver = new InheritNoTsDriver(1);
           return Q.ninvoke(driver, 'exists');
         }
     ).then(function(result) {
-          should.strictEqual(result, false);
+          result.should.be.false;
           var driver = new InheritNoTsDriver(1);
           return Q.ninvoke(
               driver
                   .getCollection(driver.collectionName), 'findOne', {'_id': 1});
         }
     ).then(function(result) {
-          should.strictEqual(result, null);
+          (result == null).should.be.true;
           done();
-        })
+        });
   });
 
   it('Test delete TS', function(done) {
@@ -60,19 +61,20 @@ describe('Driver operation: Delete', function() {
     var driver = new InheritDriver(1);
     Q.ninvoke(driver, 'exists').then(
         function(result) {
-          should.strictEqual(result, true);
+          result.should.be.true;
+          /* jshint newcap:false */
           return Q();
         }
     ).then(function() {
           var driver = new InheritDriver(1);
-          return Q.ninvoke(driver, 'delete', true)
+          return Q.ninvoke(driver, 'delete', true);
         }
     ).then(function() {
           var driver = new InheritDriver(1);
           return Q.ninvoke(driver, 'exists');
         }
     ).then(function(result) {
-          should.strictEqual(result, false);
+          result.should.be.false;
           var driver = new InheritDriver(1);
           return Q.ninvoke(
               driver
@@ -80,12 +82,12 @@ describe('Driver operation: Delete', function() {
         }
     ).then(
         function(result) {
-          should.strictEqual(result, null);
+          (result == null).should.be.true;
           done();
         }
     ).catch(function(err) {
           done(err);
-        })
+        });
 
   });
 });

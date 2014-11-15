@@ -2,9 +2,6 @@ require('should');
 var path = require('path');
 var EntityX = require('../../lib/EntityX');
 var Factory = require('../../lib/Factory');
-var Entity = require('./../../lib/entities/Entity');
-var MongoClient = require('mongodb').MongoClient;
-var connectionManager = require('../../lib/services/ConnectionManager');
 var sinon = require('sinon');
 var Q = require('q');
 
@@ -17,19 +14,6 @@ describe('Object: _internalLoadDetails', function() {
   });
 
   it('Check isLoad after loading', function(done) {
-    var mockDriver = {
-      loadEntity: function(callback) {
-        callback(null, {
-          '_id': 1,
-          'name': 'test 1',
-          '_ts': {
-            'created': new Date(),
-            'modified': new Date(),
-            'deleted': null
-          }
-        });
-      }
-    };
     var mockLoad = function(details) {
       details.name.should.be.equal(1);
     };
@@ -44,7 +28,7 @@ describe('Object: _internalLoadDetails', function() {
           stubLoadDetail.called.should.be.true;
           stubLoadDetail.calledWith({name: 1}).should.be.true;
           model._isLoad.should.be.true;
-          done()
+          done();
         }
     ).catch(function(err) {
           done(err);
@@ -65,7 +49,7 @@ describe('Object: _internalLoadDetails', function() {
           stubLoadDetail.called.should.be.true;
           stubLoadDetail.calledWith({name: 1}).should.be.true;
           model._isLoad.should.be.true;
-          done()
+          done();
         }
     ).catch(function(err) {
           done(err);
@@ -88,7 +72,7 @@ describe('Object: _internalLoadDetails', function() {
           stubLoadDetail.calledWith({name: 1}).should.be.true;
           (model._preloadDetails == null).should.be.true;
           model._isLoad.should.be.true;
-          done()
+          done();
         }
     ).catch(function(err) {
           done(err);
@@ -103,6 +87,7 @@ describe('Object: _internalLoadDetails', function() {
     };
     var mockDriver = {
       loadEntity: function() {
+        /* jshint newcap:false */
         return Q(loadStruct);
       }
     };
@@ -121,7 +106,7 @@ describe('Object: _internalLoadDetails', function() {
           stubLoadDetail.called.should.be.true;
           stubLoadDetail.calledWith(loadStruct).should.be.true;
           model._isLoad.should.be.true;
-          done()
+          done();
         }
     ).catch(function(err) {
           done(err);
@@ -132,6 +117,7 @@ describe('Object: _internalLoadDetails', function() {
     var loadStruct = null;
     var mockDriver = {
       loadEntity: function() {
+        /* jshint newcap:false */
         return Q(loadStruct);
       }
     };
@@ -143,10 +129,10 @@ describe('Object: _internalLoadDetails', function() {
     var stubDriver = sinon.stub(model, '_getDriver');
     stubDriver.returns(mockDriver);
 
-    var stubLoadDetail = sinon.stub(model, '_loadDetails', mockLoad);
+    sinon.stub(model, '_loadDetails', mockLoad);
     model.load().then(
         function() {
-          done('error')
+          done('error');
         }
     ).catch(function(err) {
           err.code.should.be.equal(404);
@@ -163,6 +149,7 @@ describe('Object: _internalLoadDetails', function() {
     };
     var mockDriver = {
       loadEntity: function(callback) {
+        /* jshint newcap:false */
         return Q(loadStruct);
       }
     };
@@ -179,11 +166,11 @@ describe('Object: _internalLoadDetails', function() {
 
     var spySetData = sinon.spy(model, '_setData');
 
-    var stubLoadDetail = sinon.stub(model, '_loadDetails', mockLoad);
+    sinon.stub(model, '_loadDetails', mockLoad);
     model.load().then(
         function() {
           spySetData.calledWith('ts', loadStruct._ts);
-          done()
+          done();
         }
     ).catch(function(err) {
           done(err);
@@ -198,6 +185,7 @@ describe('Object: _internalLoadDetails', function() {
     };
     var mockDriver = {
       loadEntity: function(callback) {
+        /* jshint newcap:false */
         return Q(loadStruct);
       }
     };
@@ -214,7 +202,7 @@ describe('Object: _internalLoadDetails', function() {
     model.load().then(
         function() {
           spySetData.calledWith('ts', loadStruct._ts).should.be.false;
-          done()
+          done();
         }
     ).catch(function(err) {
           done(err);

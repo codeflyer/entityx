@@ -4,7 +4,6 @@ var Factory = require('../lib/Factory');
 var path = require('path');
 
 describe('Factory: getDriver', function() {
-  var rootPath = path.join(__dirname, '..');
 
   beforeEach(function() {
     EntityX._reset();

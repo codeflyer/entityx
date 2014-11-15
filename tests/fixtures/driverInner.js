@@ -1,3 +1,4 @@
+/*jshint camelcase: false */
 // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
 exports.test_driver_inner = [
   {

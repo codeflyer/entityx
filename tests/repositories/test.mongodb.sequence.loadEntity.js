@@ -30,7 +30,7 @@ describe('Repositories, MongoDBSequence: loadEntity', function() {
           doc._id.should.be.equal(1);
           done();
         }
-    )
+    );
   });
 
   it('Load with promise not initialized', function(done) {
@@ -41,8 +41,8 @@ describe('Repositories, MongoDBSequence: loadEntity', function() {
         }
     ).catch(function(err) {
           err.should.be.equal('Driver not initialized');
-          done()
-        })
+          done();
+        });
   });
 
   it('Load with callback', function(done) {
@@ -52,7 +52,7 @@ describe('Repositories, MongoDBSequence: loadEntity', function() {
           doc._id.should.be.equal(1);
           done();
         }
-    )
+    );
   });
 
   it('Load with callback not initialized', function(done) {
@@ -62,6 +62,6 @@ describe('Repositories, MongoDBSequence: loadEntity', function() {
           err.should.be.equal('Driver not initialized');
           done();
         }
-    )
+    );
   });
 });

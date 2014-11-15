@@ -1,4 +1,4 @@
-var should = require('should');
+require('should');
 var EntityX = require('../lib/EntityX');
 var Factory = require('../lib/Factory');
 var path = require('path');

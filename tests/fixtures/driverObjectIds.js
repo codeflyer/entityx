@@ -1,5 +1,6 @@
 var ObjectID = require('mongodb').ObjectID;
 
+/*jshint camelcase: false */
 // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
 exports.test_object_ids = [
   {'_id': new ObjectID(1), 'name': 'test 1'},

@@ -1,4 +1,4 @@
-var should = require('should');
+require('should');
 var InheritDriver = require('./../classesTest/lib/repositories/InheritDriver');
 var InheritNoTsDriver =
     require('./../classesTest/lib/repositories/InheritNoTsDriver');
@@ -32,7 +32,7 @@ describe('Driver Exists', function() {
           if (err) {
             done(err);
           }
-          should.strictEqual(result, true);
+          result.should.be.true;
           done();
         }
     );
@@ -44,7 +44,7 @@ describe('Driver Exists', function() {
           if (err) {
             done(err);
           }
-          should.strictEqual(result, false);
+          result.should.be.false;
           done();
         }
     );
@@ -56,7 +56,7 @@ describe('Driver Exists', function() {
           if (err) {
             done(err);
           }
-          should.strictEqual(result, false);
+          result.should.be.false;
           done();
         }
     );
@@ -68,7 +68,7 @@ describe('Driver Exists', function() {
           if (err) {
             done(err);
           }
-          should.strictEqual(result, true);
+          result.should.be.true;
           done();
         }
     );
@@ -80,7 +80,7 @@ describe('Driver Exists', function() {
           if (err) {
             done(err);
           }
-          should.strictEqual(result, false);
+          result.should.be.false;
           done();
         }
     );
