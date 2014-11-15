@@ -1,3 +1,3 @@
 exports.sequences = [
-    { "_id" : 'dfcore_users', "seq" : 0 }
+  {'_id': 'dfcore_users', 'seq': 0}
 ];

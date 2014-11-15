@@ -1,9 +1,9 @@
-var util = require("util");
+var util = require('util');
 var Entity = require('./../../../../lib/entities/Entity');
 var Factory = require('./../../../../lib/Factory');
 
 var EntityInherit = function() {
-    Entity.call(this, {'useTimestamp' : true});
+  Entity.call(this, {'useTimestamp': true});
 };
 util.inherits(EntityInherit, Entity);
 
@@ -13,20 +13,20 @@ util.inherits(EntityInherit, Entity);
  * @private
  */
 EntityInherit.prototype._getDriver = function() {
-    return Factory.getDriver('TestModule/Inherit', this.getId());
+  return Factory.getDriver('TestModule/Inherit', this.getId());
 };
 
 EntityInherit.prototype._loadDetails = function(details, callback) {
-    this._setData('name', details.name);
-    return details;
+  this._setData('name', details.name);
+  return details;
 };
 
 EntityInherit.prototype.setName = function(name) {
-    return this._setData('name', name);
+  return this._setData('name', name);
 };
 
 EntityInherit.prototype.getName = function() {
-    return this._getData('name');
+  return this._getData('name');
 };
 
 module.exports = EntityInherit;
