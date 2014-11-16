@@ -5,24 +5,24 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
 
   var jshintOptions = {
-    camelcase : true,
-    curly : true,
-    eqeqeq : true,
-    forin : true,
-    newcap : true,
-    nonbsp : true,
-    unused : 'vars',
-    eqnull : true,
-    node : true,
-    devel : true,
-    expr : true
+    camelcase: true,
+    curly: true,
+    eqeqeq: true,
+    forin: true,
+    newcap: true,
+    nonbsp: true,
+    unused: 'vars',
+    eqnull: true,
+    node: true,
+    devel: true,
+    expr: true
   };
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
     jshint: {
-      options : jshintOptions,
+      options: jshintOptions,
       all: ['Gruntfile.js', 'lib/**/*.js', 'tests/**/*.js']
     },
     jscs: {
@@ -32,6 +32,9 @@ module.exports = function(grunt) {
       }
     },
     plato: {
+      options: {
+        jshint: jshintOptions
+      },
       main: {
         files: {
           'reports/plato/': ['lib/**/*.js', 'test/**/*.js']
@@ -42,7 +45,9 @@ module.exports = function(grunt) {
       files: ['<%= jscs.files %>'],
       tasks: ['jscs']
     }
-  });
+  })
+  ;
 
   grunt.registerTask('default', ['jshint', 'jscs']);
-};
+}
+;
