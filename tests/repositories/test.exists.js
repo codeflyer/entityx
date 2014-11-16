@@ -28,60 +28,55 @@ describe('Driver Exists', function() {
 
   it('Test exists Ts', function(done) {
     var driver = new InheritDriver(1);
-    driver.exists(function(err, result) {
-          if (err) {
-            done(err);
-          }
-          result.should.be.true;
-          done();
+    driver.exists().then(function(exists) {
+      exists.should.be.true;
+      done();
+    }).catch(function(err) {
+          done(err);
         }
     );
   });
 
   it('Test not exists Ts (removed)', function(done) {
     var driver = new InheritDriver(3);
-    driver.exists(function(err, result) {
-          if (err) {
-            done(err);
-          }
-          result.should.be.false;
-          done();
+    driver.exists().then(function(exists) {
+      exists.should.be.false;
+      done();
+    }).catch(function(err) {
+          done(err);
         }
     );
   });
 
   it('Test not exists Ts (never existed)', function(done) {
     var driver = new InheritDriver(4);
-    driver.exists(function(err, result) {
-          if (err) {
-            done(err);
-          }
-          result.should.be.false;
-          done();
+    driver.exists().then(function(exists) {
+      exists.should.be.false;
+      done();
+    }).catch(function(err) {
+          done(err);
         }
     );
   });
 
   it('Test exists NoTs', function(done) {
     var driver = new InheritNoTsDriver(1);
-    driver.exists(function(err, result) {
-          if (err) {
-            done(err);
-          }
-          result.should.be.true;
-          done();
+    driver.exists().then(function(exists) {
+      exists.should.be.true;
+      done();
+    }).catch(function(err) {
+          done(err);
         }
     );
   });
 
   it('Test not exists No Ts (never existed)', function(done) {
     var driver = new InheritNoTsDriver(4);
-    driver.exists(function(err, result) {
-          if (err) {
-            done(err);
-          }
-          result.should.be.false;
-          done();
+    driver.exists().then(function(exists) {
+      exists.should.be.false;
+      done();
+    }).catch(function(err) {
+          done(err);
         }
     );
   });

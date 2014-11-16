@@ -26,12 +26,15 @@ describe('Repositories, MongoDBObjectID: Insert', function() {
 
   it('Insert new', function(done) {
     var driver = new MongoDBObjectID({'collectionName': 'coll_name'}, null);
-    driver.insert({'test': 'foo'}, function(err, doc) {
-      doc._id.should.be.instanceOf(ObjectID);
-      doc.test.should.be.equal('foo');
-      (doc._ts == null).should.be.true;
-      done();
-    });
+    driver.insert({'test': 'foo'}).then(
+        function(doc) {
+          doc._id.should.be.instanceOf(ObjectID);
+          doc.test.should.be.equal('foo');
+          (doc._ts == null).should.be.true;
+          done();
+        }).catch(function(err) {
+          done(err);
+        });
   });
 
   it('Insert new with timestamp', function(done) {
@@ -39,13 +42,16 @@ describe('Repositories, MongoDBObjectID: Insert', function() {
       'collectionName': 'coll_name',
       'useTimestamp': true
     }, null);
-    driver.insert({'test': 'foo'}, function(err, doc) {
-      doc._id.should.be.instanceOf(ObjectID);
-      doc.test.should.be.equal('foo');
-      doc._ts.created.should.exists;
-      doc._ts.modified.should.exists;
-      (doc._ts.deleted == null).should.be.true;
-      done();
-    });
+    driver.insert({'test': 'foo'}).then(
+        function(doc) {
+          doc._id.should.be.instanceOf(ObjectID);
+          doc.test.should.be.equal('foo');
+          doc._ts.created.should.exists;
+          doc._ts.modified.should.exists;
+          (doc._ts.deleted == null).should.be.true;
+          done();
+        }).catch(function(err) {
+          done(err);
+        });
   });
 });

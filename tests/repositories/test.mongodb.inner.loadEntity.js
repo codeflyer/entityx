@@ -30,8 +30,11 @@ describe('Repositories, MongoDBInner: Load details', function() {
       'collectionName': 'test_driver_inner',
       'innerFieldName': 'list'
     }, 2);
-    innerDriver.loadEntity(function(err, doc) {
-      done();
-    });
+    innerDriver.loadEntity().then(function(doc) {
+          done();
+        }
+    ).catch(function(err) {
+          done(err);
+        });
   });
 });

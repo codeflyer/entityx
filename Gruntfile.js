@@ -3,6 +3,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-jscs');
   grunt.loadNpmTasks('grunt-plato');
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
   var jshintOptions = {
     globals: {
@@ -46,7 +47,7 @@ module.exports = function(grunt) {
     },
     watch: {
       files: ['<%= jscs.files %>'],
-      tasks: ['jscs']
+      tasks: ['jscs', 'jshint']
     }
   })
   ;

@@ -40,7 +40,7 @@ describe('Repositories, MongoDBSequence: loadEntity', function() {
           done('error');
         }
     ).catch(function(err) {
-          err.should.be.equal('Driver not initialized');
+          err.code.should.be.equal(412);
           done();
         });
   });

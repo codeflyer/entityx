@@ -28,18 +28,22 @@ describe('Repositories, MongoDBInner: Update', function() {
 
   it('Insert new', function(done) {
     var driver = new MongoDBSequence({'collectionName': 'coll_name'}, null);
-    driver.insert({'test': 'foo'}, function(err, doc) {
-      var innerDriver = new MongoDBInner({
-        'collectionName': 'coll_name',
-        'innerFieldName': 'list'
-      }, null);
-      innerDriver.insert(2, {'val': 'bar'}, function(err, doc) {
-
-        var innerUpdateDriver = new MongoDBInner({
-          'collectionName': 'coll_name',
-          'innerFieldName': 'list'
-        }, 2);
-        innerUpdateDriver.update({'val': 'gon'}, function() {
+    driver.insert({'test': 'foo'}).then(
+        function(doc) {
+          var innerDriver = new MongoDBInner({
+            'collectionName': 'coll_name',
+            'innerFieldName': 'list'
+          }, null);
+          return innerDriver.insert(2, {'val': 'bar'});
+        }
+    ).then(function(doc) {
+          var innerUpdateDriver = new MongoDBInner({
+            'collectionName': 'coll_name',
+            'innerFieldName': 'list'
+          }, 2);
+          return innerUpdateDriver.update({'val': 'gon'});
+        }
+    ).then(function() {
           connection.collection('coll_name').findOne(
               {'_id': 2}, function(err, doc) {
                 doc.list.should.be.eql([
@@ -48,7 +52,5 @@ describe('Repositories, MongoDBInner: Update', function() {
                 done();
               });
         });
-      });
-    });
   });
 });

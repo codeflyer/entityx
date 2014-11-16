@@ -29,7 +29,7 @@ describe('Driver operation: Delete', function() {
 
   it('Test delete noTS', function(done) {
     var driver = new InheritNoTsDriver(1);
-    Q.ninvoke(driver, 'exists').then(
+    driver.exists().then(
         function(result) {
           result.should.be.true;
           /* jshint newcap:false */
@@ -37,11 +37,11 @@ describe('Driver operation: Delete', function() {
         }
     ).then(function() {
           var driver = new InheritNoTsDriver(1);
-          return Q.ninvoke(driver, 'delete');
+          return driver.delete();
         }
     ).then(function() {
           var driver = new InheritNoTsDriver(1);
-          return Q.ninvoke(driver, 'exists');
+          return driver.exists();
         }
     ).then(function(result) {
           result.should.be.false;
@@ -59,7 +59,7 @@ describe('Driver operation: Delete', function() {
   it('Test delete TS', function(done) {
 
     var driver = new InheritDriver(1);
-    Q.ninvoke(driver, 'exists').then(
+    return driver.exists().then(
         function(result) {
           result.should.be.true;
           /* jshint newcap:false */
@@ -67,11 +67,11 @@ describe('Driver operation: Delete', function() {
         }
     ).then(function() {
           var driver = new InheritDriver(1);
-          return Q.ninvoke(driver, 'delete', true);
+          return driver.delete(true);
         }
     ).then(function() {
           var driver = new InheritDriver(1);
-          return Q.ninvoke(driver, 'exists');
+          return driver.exists();
         }
     ).then(function(result) {
           result.should.be.false;
