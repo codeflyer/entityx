@@ -14,7 +14,7 @@ describe('Object: load', function() {
   });
 
   it('Load entity already loaded', function(done) {
-    var model = Factory.getModel('TestModule/EntityInherit', 1);
+    var model = Factory.getEntity('TestModule/EntityInherit', 1);
     var spy = sinon.spy(model, '_internalLoadDetails');
     model._isLoad = true;
     model.load().then(
@@ -28,7 +28,7 @@ describe('Object: load', function() {
   });
 
   it('Load entity NOT loaded', function(done) {
-    var model = Factory.getModel('TestModule/EntityInherit', 1);
+    var model = Factory.getEntity('TestModule/EntityInherit', 1);
     var stub = sinon.stub(model, '_internalLoadDetails');
     /* jshint newcap:false */
     stub.returns(Q(model));
@@ -45,7 +45,7 @@ describe('Object: load', function() {
   });
 
   it('Load entity NOT loaded With InjectedDetails', function(done) {
-    var model = Factory.getModel('TestModule/EntityInherit', 1);
+    var model = Factory.getEntity('TestModule/EntityInherit', 1);
     var stub = sinon.stub(model, '_internalLoadDetails');
     /* jshint newcap:false */
     stub.returns(Q(model));

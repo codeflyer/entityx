@@ -6,7 +6,7 @@ var ObjectID = require('mongodb').ObjectID;
 var sinon = require('sinon');
 require('should');
 
-describe('Factory: getModel', function() {
+describe('Factory: getEntity', function() {
   var rootPath = path.join(__dirname, '..');
   var spyIsModuleSet;
   var spyGetModulePath;
@@ -27,7 +27,7 @@ describe('Factory: getModel', function() {
   });
 
   it('Get model First time (exists)', function() {
-    Factory.getModel('TestModule/EntityInherit');
+    Factory.getEntity('TestModule/EntityInherit');
     spyIsModuleSet.calledWithExactly('TestModule').should.be.true;
     spyGetModulePath.calledWithExactly('TestModule').should.be.true;
     spyIsModuleSet.calledOnce.should.be.true;
@@ -36,7 +36,7 @@ describe('Factory: getModel', function() {
 
   it('Get model First time (module not init not exists)', function() {
     (function() {
-      Factory.getModel('TestModule/EntityInherit2');
+      Factory.getEntity('TestModule/EntityInherit2');
     }).should.throw('Cannot find module \'' +
         rootPath + '/tests/classesTest/lib/entities/EntityInherit2\'');
     spyIsModuleSet.calledWithExactly('TestModule').should.be.true;
@@ -46,40 +46,40 @@ describe('Factory: getModel', function() {
   });
 
   it('Get model Second time', function() {
-    Factory.getModel('TestModule/EntityInherit');
+    Factory.getEntity('TestModule/EntityInherit');
 
-    Factory.getModel('TestModule/EntityInherit');
+    Factory.getEntity('TestModule/EntityInherit');
 
     spyIsModuleSet.calledOnce.should.be.true;
     spyGetModulePath.calledOnce.should.be.true;
   });
 
   it('Get model not init', function() {
-    var model = Factory.getModel('TestModule/EntityInherit');
+    var model = Factory.getEntity('TestModule/EntityInherit');
     (model._id == null).should.be.true;
   });
 
   it('Get model not init scalar', function() {
-    var model = Factory.getModel('TestModule/EntityInherit', 5);
+    var model = Factory.getEntity('TestModule/EntityInherit', 5);
     model._id.should.be.equal(5);
   });
 
   it('Get model not init ObjectId', function() {
     var newId = new ObjectID();
-    var model = Factory.getModel('TestModule/EntityInherit', newId);
+    var model = Factory.getEntity('TestModule/EntityInherit', newId);
 
     model._id.should.be.equal(newId.toString());
   });
 
   it('Get model with preload', function() {
     var struct = {'name': 'davide', 'surname': 'fiorello'};
-    var model = Factory.getModel('TestModule/EntityInherit', 5, struct);
+    var model = Factory.getEntity('TestModule/EntityInherit', 5, struct);
 
     model._preloadDetails.should.be.eql(struct);
   });
 
   it('Get model with NO preload', function() {
-    var model = Factory.getModel('TestModule/EntityInherit', 5);
+    var model = Factory.getEntity('TestModule/EntityInherit', 5);
 
     (model._preloadDetails == null).should.be.true;
   });

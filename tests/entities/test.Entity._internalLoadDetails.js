@@ -18,7 +18,7 @@ describe('Object: _internalLoadDetails', function() {
       details.name.should.be.equal(1);
     };
 
-    var model = Factory.getModel('TestModule/EntityInherit', 1);
+    var model = Factory.getEntity('TestModule/EntityInherit', 1);
     model._isLoad.should.be.false;
     var spyDriver = sinon.spy(model, '_getDriver');
     var stubLoadDetail = sinon.stub(model, '_loadDetails', mockLoad);
@@ -40,7 +40,7 @@ describe('Object: _internalLoadDetails', function() {
       details.name.should.be.equal(1);
     };
 
-    var model = Factory.getModel('TestModule/EntityInherit', 1);
+    var model = Factory.getEntity('TestModule/EntityInherit', 1);
     var spyDriver = sinon.spy(model, '_getDriver');
     var stubLoadDetail = sinon.stub(model, '_loadDetails', mockLoad);
     model.load({name: 1}).then(
@@ -61,7 +61,7 @@ describe('Object: _internalLoadDetails', function() {
       details.name.should.be.equal(1);
     };
 
-    var model = Factory.getModel('TestModule/EntityInherit', 1, {name: 1});
+    var model = Factory.getEntity('TestModule/EntityInherit', 1, {name: 1});
     model._preloadDetails.should.be.not.null;
     var spyDriver = sinon.spy(model, '_getDriver');
     var stubLoadDetail = sinon.stub(model, '_loadDetails', mockLoad);
@@ -95,7 +95,7 @@ describe('Object: _internalLoadDetails', function() {
       details.name.should.be.equal('test 1');
     };
 
-    var model = Factory.getModel('TestModule/EntityInherit', 1);
+    var model = Factory.getEntity('TestModule/EntityInherit', 1);
     var stubDriver = sinon.stub(model, '_getDriver');
     stubDriver.returns(mockDriver);
 
@@ -125,7 +125,7 @@ describe('Object: _internalLoadDetails', function() {
       details.name.should.be.equal(1);
     };
 
-    var model = Factory.getModel('TestModule/EntityInherit', 1);
+    var model = Factory.getEntity('TestModule/EntityInherit', 1);
     var stubDriver = sinon.stub(model, '_getDriver');
     stubDriver.returns(mockDriver);
 
@@ -157,7 +157,7 @@ describe('Object: _internalLoadDetails', function() {
       details.name.should.be.equal('test 1');
     };
 
-    var model = Factory.getModel('TestModule/EntityInherit', 1);
+    var model = Factory.getEntity('TestModule/EntityInherit', 1);
     var stubDriver = sinon.stub(model, '_getDriver');
     stubDriver.returns(mockDriver);
 
@@ -190,7 +190,7 @@ describe('Object: _internalLoadDetails', function() {
       }
     };
 
-    var model = Factory.getModel('TestModule/EntityInherit', 1);
+    var model = Factory.getEntity('TestModule/EntityInherit', 1);
     var stubDriver = sinon.stub(model, '_getDriver');
     stubDriver.returns(mockDriver);
 
