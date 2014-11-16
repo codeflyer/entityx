@@ -20,7 +20,7 @@ describe('Object: _internalLoadDetails', function() {
 
     var model = Factory.getEntity('TestModule/EntityInherit', 1);
     model._isLoad.should.be.false;
-    var spyDriver = sinon.spy(model, '_getDriver');
+    var spyDriver = sinon.spy(model, '_getRepository');
     var stubLoadDetail = sinon.stub(model, '_loadDetails', mockLoad);
     model.load({name: 1}).then(
         function() {
@@ -41,7 +41,7 @@ describe('Object: _internalLoadDetails', function() {
     };
 
     var model = Factory.getEntity('TestModule/EntityInherit', 1);
-    var spyDriver = sinon.spy(model, '_getDriver');
+    var spyDriver = sinon.spy(model, '_getRepository');
     var stubLoadDetail = sinon.stub(model, '_loadDetails', mockLoad);
     model.load({name: 1}).then(
         function() {
@@ -63,7 +63,7 @@ describe('Object: _internalLoadDetails', function() {
 
     var model = Factory.getEntity('TestModule/EntityInherit', 1, {name: 1});
     model._preloadDetails.should.be.not.null;
-    var spyDriver = sinon.spy(model, '_getDriver');
+    var spyDriver = sinon.spy(model, '_getRepository');
     var stubLoadDetail = sinon.stub(model, '_loadDetails', mockLoad);
     model.load().then(
         function() {
@@ -96,7 +96,7 @@ describe('Object: _internalLoadDetails', function() {
     };
 
     var model = Factory.getEntity('TestModule/EntityInherit', 1);
-    var stubDriver = sinon.stub(model, '_getDriver');
+    var stubDriver = sinon.stub(model, '_getRepository');
     stubDriver.returns(mockDriver);
 
     var stubLoadDetail = sinon.stub(model, '_loadDetails', mockLoad);
@@ -126,7 +126,7 @@ describe('Object: _internalLoadDetails', function() {
     };
 
     var model = Factory.getEntity('TestModule/EntityInherit', 1);
-    var stubDriver = sinon.stub(model, '_getDriver');
+    var stubDriver = sinon.stub(model, '_getRepository');
     stubDriver.returns(mockDriver);
 
     sinon.stub(model, '_loadDetails', mockLoad);
@@ -158,7 +158,7 @@ describe('Object: _internalLoadDetails', function() {
     };
 
     var model = Factory.getEntity('TestModule/EntityInherit', 1);
-    var stubDriver = sinon.stub(model, '_getDriver');
+    var stubDriver = sinon.stub(model, '_getRepository');
     stubDriver.returns(mockDriver);
 
     var stubUseTimestamp = sinon.stub(model, 'useTimestamp');
@@ -191,7 +191,7 @@ describe('Object: _internalLoadDetails', function() {
     };
 
     var model = Factory.getEntity('TestModule/EntityInherit', 1);
-    var stubDriver = sinon.stub(model, '_getDriver');
+    var stubDriver = sinon.stub(model, '_getRepository');
     stubDriver.returns(mockDriver);
 
     var stubUseTimestamp = sinon.stub(model, 'useTimestamp');

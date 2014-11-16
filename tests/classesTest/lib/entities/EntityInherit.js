@@ -12,8 +12,8 @@ util.inherits(EntityInherit, Entity);
  * @returns {*}
  * @private
  */
-EntityInherit.prototype._getDriver = function() {
-  return Factory.getDriver('TestModule/Inherit', this.getId());
+EntityInherit.prototype._getRepository = function() {
+  return Factory.getRepository('TestModule/Inherit', this.getId());
 };
 
 EntityInherit.prototype._loadDetails = function(details, callback) {
