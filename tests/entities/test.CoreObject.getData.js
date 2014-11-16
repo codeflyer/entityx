@@ -3,7 +3,7 @@ var path = require('path');
 var EntityX = require('../../lib/EntityX');
 var CoreObject = require('./../../lib/entities/CoreObject');
 
-describe('Object: setDataEntity', function() {
+describe('Object: getData', function() {
 
   beforeEach(function() {
     EntityX._reset();
