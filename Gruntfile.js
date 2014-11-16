@@ -5,6 +5,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
 
   var jshintOptions = {
+    globals: {
+      Promise: true
+    },
     camelcase: true,
     curly: true,
     eqeqeq: true,

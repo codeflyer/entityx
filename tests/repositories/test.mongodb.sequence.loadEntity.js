@@ -44,24 +44,4 @@ describe('Repositories, MongoDBSequence: loadEntity', function() {
           done();
         });
   });
-
-  it('Load with callback', function(done) {
-    var driver = new MongoDBSequence({'collectionName': 'test_driver_ts'}, 1);
-    driver.loadEntity(
-        function(err, doc) {
-          doc._id.should.be.equal(1);
-          done();
-        }
-    );
-  });
-
-  it('Load with callback not initialized', function(done) {
-    var driver = new MongoDBSequence({'collectionName': 'test_driver_ts'});
-    driver.loadEntity(
-        function(err, doc) {
-          err.should.be.equal('Driver not initialized');
-          done();
-        }
-    );
-  });
 });

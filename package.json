@@ -20,7 +20,8 @@
   "dependencies": {
     "errorx": "git://github.com/codeflyer/errorx.git#0.0.1",
     "mongodb": "^1.4.3",
-    "q": "^1.0.1"
+    "q": "^1.0.1",
+    "bluebird": "^2.2.2"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
