@@ -13,6 +13,17 @@ describe('Object: load', function() {
     EntityX.addModule('classesTest');
   });
 
+  it('check isLoad == false', function() {
+    var model = Factory.getEntity('TestModule/EntityInherit', 1);
+    model.isLoad().should.be.false;
+  });
+
+  it('check isLoad == true', function() {
+    var model = Factory.getEntity('TestModule/EntityInherit', 1);
+    model._isLoad = true;
+    model.isLoad().should.be.true;
+  });
+
   it('Load entity already loaded', function(done) {
     var model = Factory.getEntity('TestModule/EntityInherit', 1);
     var spy = sinon.spy(model, '_internalLoadDetails');

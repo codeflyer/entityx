@@ -4,7 +4,9 @@ test:
 
 cover:
 	@NODE_ENV="test" \
-	./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- -u exports -R spec "tests/**/test.*.js"
+	./node_modules/.bin/istanbul \
+	cover --dir ./reports/coverage ./node_modules/.bin/_mocha -- -u exports -R \
+	spec "tests/**/test.*.js"
 
 lint:
 	./node_modules/gulp/bin/gulp.js lint
