@@ -1,57 +1,32 @@
-var EntityX = require('../lib/EntityX');
-var Factory = require('../lib/Factory');
+require('should');
+
 var path = require('path');
 var ObjectID = require('mongodb').ObjectID;
 
-var sinon = require('sinon');
-require('should');
+var EntityX = require('../lib/EntityX');
+var Factory = require('../lib/Factory');
 
 describe('Factory: getEntity', function() {
-  var rootPath = path.join(__dirname, '..');
-  var spyIsModuleSet;
-  var spyGetModulePath;
-  var sandbox;
-
   beforeEach(function() {
     EntityX._reset();
     EntityX.setApplicationRoot(path.join(__dirname));
     EntityX.addModule('classesTest');
     Factory.reset();
-    sandbox = sinon.sandbox.create();
-    spyIsModuleSet = sandbox.spy(EntityX, 'isModuleSet');
-    spyGetModulePath = sandbox.spy(EntityX, 'getModule');
-  });
-
-  afterEach(function() {
-    sandbox.restore();
   });
 
   it('Get model First time (exists)', function() {
-    Factory.getEntity('TestModule/EntityInherit');
-    spyIsModuleSet.calledWithExactly('TestModule').should.be.true;
-    spyGetModulePath.calledWithExactly('TestModule').should.be.true;
-    spyIsModuleSet.calledOnce.should.be.true;
-    spyGetModulePath.calledOnce.should.be.true;
+    try {
+      Factory.getEntity('TestModule/EntityInherit');
+    } catch (e) {
+      throw e;
+    }
   });
 
-  it('Get model First time (module not init not exists)', function() {
+  it('Get model First time (Module init, class not not exists)', function() {
     (function() {
       Factory.getEntity('TestModule/EntityInherit2');
-    }).should.throw('Cannot find module \'' +
-        rootPath + '/tests/classesTest/lib/entities/EntityInherit2\'');
-    spyIsModuleSet.calledWithExactly('TestModule').should.be.true;
-    spyGetModulePath.calledWithExactly('TestModule').should.be.true;
-    spyIsModuleSet.calledOnce.should.be.true;
-    spyGetModulePath.calledOnce.should.be.true;
-  });
-
-  it('Get model Second time', function() {
-    Factory.getEntity('TestModule/EntityInherit');
-
-    Factory.getEntity('TestModule/EntityInherit');
-
-    spyIsModuleSet.calledOnce.should.be.true;
-    spyGetModulePath.calledOnce.should.be.true;
+    }).should.throw(
+        'Class [TestModule/EntityInherit2] of type [entities] not defined');
   });
 
   it('Get model not init', function() {
@@ -67,7 +42,6 @@ describe('Factory: getEntity', function() {
   it('Get model not init ObjectId', function() {
     var newId = new ObjectID();
     var model = Factory.getEntity('TestModule/EntityInherit', newId);
-
     model._id.should.be.equal(newId.toString());
   });
 
@@ -80,7 +54,15 @@ describe('Factory: getEntity', function() {
 
   it('Get model with NO preload', function() {
     var model = Factory.getEntity('TestModule/EntityInherit', 5);
-
     (model._preloadDetails == null).should.be.true;
+  });
+
+  it('Set entity', function() {
+    function injectedClass() {
+      this.check = 'check';
+    }
+    Factory.setEntity('TestModule/Injected', injectedClass);
+    var model = Factory.getEntity('TestModule/Injected');
+    model.check.should.be.equal('check');
   });
 });
