@@ -3,7 +3,7 @@ var sinon = require('sinon');
 var path = require('path');
 var EntityX = require('../lib/EntityX');
 
-describe.only('EntityX addModuleWithAbsolutePath', function() {
+describe('EntityX addModuleWithAbsolutePath', function() {
   var sandbox;
 
   beforeEach(function() {
