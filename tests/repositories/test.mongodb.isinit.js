@@ -2,7 +2,7 @@ require('should');
 
 var MongoDBDriver = require('./../../lib/repositories/MongoDB');
 
-describe('Repositories, MongoDB: Constructor', function() {
+describe('Repositories, MongoDB: isInit', function() {
 
   it('isInit == false', function() {
     var driver;
