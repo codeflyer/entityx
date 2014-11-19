@@ -5,28 +5,14 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
-  var jshintOptions = {
-    globals: {
-      Promise: true
-    },
-    camelcase: true,
-    curly: true,
-    eqeqeq: true,
-    forin: true,
-    newcap: true,
-    nonbsp: true,
-    unused: 'vars',
-    eqnull: true,
-    node: true,
-    devel: true,
-    expr: true
-  };
-
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
     jshint: {
-      options: jshintOptions,
+      options: {
+        jshintrc : '.jshintrc',
+        force : true
+      },
       all: ['Gruntfile.js', 'lib/**/*.js', 'tests/**/*.js']
     },
     jscs: {
@@ -37,7 +23,7 @@ module.exports = function(grunt) {
     },
     plato: {
       options: {
-        jshint: jshintOptions
+        jshint:  grunt.file.readJSON('.jshintrc')
       },
       main: {
         files: {
