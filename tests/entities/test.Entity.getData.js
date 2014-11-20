@@ -21,9 +21,16 @@ describe('Object: getData', function() {
 
   it('Get data not loaded initialized', function() {
     var obj = new Entity({'useTimestamp': true});
+    obj._isNewObject = false;
     (function() {
       obj._getData('entity');
     }).should.throw('Entity not loaded: need entity.load().then(...)');
+  });
+
+  it('Get data not loaded but newObject', function() {
+    var obj = new Entity({'useTimestamp': true});
+    obj._setData('entity', 2);
+    obj._getData('entity').should.be.equal(2);
   });
 
   it('Get data with result', function() {

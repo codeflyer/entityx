@@ -24,20 +24,7 @@ describe('Object: storeFields', function() {
     var stub = sinon.stub(model, '_getDataForSave');
     var MockDriver = function(id) {
       this.update = function(values) {
-        return {
-          bind: function(obj) {
-            return {
-              then: function(promiseCallback) {
-                promiseCallback.call(model, null);
-                return {
-                  'catch': function(errorCallback) {
-                    return Promise.resolve();
-                  }
-                };
-              }
-            };
-          }
-        };
+        return Promise.resolve();
       };
     };
     var driverStub = sinon.stub(model, '_getRepository');
@@ -66,20 +53,7 @@ describe('Object: storeFields', function() {
     var MockDriver = function(id) {
       this.update = function(values) {
         values.should.be.eql({field1: 'value1'});
-        return {
-          bind: function(obj) {
-            return {
-              then: function(promiseCallback) {
-                promiseCallback.call(obj, null);
-                return {
-                  'catch': function(errorCallback) {
-                    return Promise.resolve();
-                  }
-                };
-              }
-            };
-          }
-        };
+        return Promise.resolve();
       };
     };
     var driverStub = sinon.stub(model, '_getRepository');
@@ -114,20 +88,7 @@ describe('Object: storeFields', function() {
           field2: 'value2',
           field3: 'value3'
         });
-        return {
-          bind: function(obj) {
-            return {
-              then: function(promiseCallback) {
-                promiseCallback.call(obj, null);
-                return {
-                  'catch': function(errorCallback) {
-                    return Promise.resolve();
-                  }
-                };
-              }
-            };
-          }
-        };
+        return Promise.resolve();
       };
     };
     var driverStub = sinon.stub(model, '_getRepository');
@@ -162,20 +123,7 @@ describe('Object: storeFields', function() {
           field2: 'value2',
           field3: 'value3'
         });
-        return {
-          bind: function(obj) {
-            return {
-              then: function(promiseCallback) {
-                promiseCallback.call(obj, null);
-                return {
-                  'catch': function(errorCallback) {
-                    return Promise.resolve();
-                  }
-                };
-              }
-            };
-          }
-        };
+        return Promise.resolve();
       };
     };
     var driverStub = sinon.stub(model, '_getRepository');
@@ -201,15 +149,7 @@ describe('Object: storeFields', function() {
     var MockDriver = function() {
       this.update = function(values) {
         values.should.be.eql({field1: 'value1'});
-        return {
-          bind: function(obj) {
-            return {
-              then: function(promiseCallback) {
-                return Promise.reject(new ErrorX(500, 'mongodberror'));
-              }
-            };
-          }
-        };
+        throw new ErrorX(500, 'mongodberror');
       };
     };
     var driverStub = sinon.stub(model, '_getRepository');
