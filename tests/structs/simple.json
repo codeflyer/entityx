@@ -9,7 +9,7 @@
       "accessors": [
         "get",
         "set",
-        "getSync"
+        "getAsync"
       ]
     },
     {
@@ -18,7 +18,7 @@
       "accessors": [
         "get",
         "set",
-        "getSync"
+        "getAsync"
       ]
     }
   ]

@@ -1,6 +1,6 @@
 require('should');
 var Promise = require('bluebird');
-var generatorGet = require('../../../lib/generators/code/default/get');
+var generatorGet = require('../../../lib/generators/code/default/getAsync');
 
 describe('Generators code default get', function() {
 
@@ -32,11 +32,11 @@ describe('Generators code default get', function() {
         };
       };
     };
-    TestModel.prototype.getName = generatorGet('name');
+    TestModel.prototype.getNameAsync = generatorGet('name');
 
     var instance = new TestModel();
     try {
-      instance.getName().then(
+      instance.getNameAsync().then(
           function(value) {
             value.should.be.equal('modified-name');
             getDataCount.should.be.equal(1);
@@ -77,11 +77,11 @@ describe('Generators code default get', function() {
         };
       };
     };
-    TestModel.prototype.getName = generatorGet('name');
+    TestModel.prototype.getNameAsync = generatorGet('name');
 
     var instance = new TestModel();
     try {
-      instance.getName().then(
+      instance.getNameAsync().then(
           function(value) {
             value.should.be.equal('modified-name');
             getDataCount.should.be.equal(1);

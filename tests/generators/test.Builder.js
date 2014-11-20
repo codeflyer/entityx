@@ -11,18 +11,17 @@ describe('generators/Builder', function() {
     function Simple() {
       Entity.call(this, {'useTimestamp': true});
     }
-
     util.inherits(Simple, Entity);
 
-    Builder.build(Simple, define);
+    Builder.buildEntity(define, Simple);
 
     var instance = new Simple();
     instance._isLoad = true;
     instance._setData('field1', 'hello');
-    instance.getField1().then(function(result) {
+    instance.getField1Async().then(function(result) {
       result.should.be.equal('hello');
       instance.setField1('world');
-      instance.getField1Sync().should.be.equal('world');
+      instance.getField1().should.be.equal('world');
       done();
     });
   });
