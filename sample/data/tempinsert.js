@@ -1,0 +1,2 @@
+db.authors.save({ "_id" : ObjectId("546d12ba3793275f9b72d027"), "name" : "J.K.", "surname" : "Rowling", "address" : { "street" : "Orange road", "zip" : "JKE12" } });
+db.books.save({ "_id" : ObjectId("546d0e283793275f9b72d026"), "title" : "Harry Potter e la pietra filosofale", "pages" : 315, "author" : { "_id" : ObjectId("546d12ba3793275f9b72d027") }, "publisher" : "Feltrinelli", "releaseDate" : ISODate("2014-11-19T21:39:52.670Z") });

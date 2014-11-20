@@ -1,0 +1,33 @@
+{
+  "module": "Books",
+  "className": "Address",
+  "attributes": [
+    {
+      "name": "street",
+      "type": "string",
+      "accessors": [
+        "get",
+        "set",
+        "getAsync"
+      ]
+    },
+    {
+      "name": "zip",
+      "type": "string",
+      "accessors": [
+        "get",
+        "set",
+        "getAsync"
+      ]
+    },
+    {
+      "name": "city",
+      "type": "string",
+      "accessors": [
+        "get",
+        "set",
+        "getAsync"
+      ]
+    }
+  ]
+}

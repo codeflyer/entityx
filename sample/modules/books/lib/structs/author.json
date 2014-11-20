@@ -1,0 +1,38 @@
+{
+  "module": "Books",
+  "className": "Author",
+  "collectionName": "authors",
+  "useTimestamp" : true,
+  "timestampFlat" : false,
+  "driverType" : "MongoDBObjectID",
+  "attributes": [
+    {
+      "name": "name",
+      "type": "string",
+      "accessors": [
+        "get",
+        "set",
+        "getAsync"
+      ]
+    },
+    {
+      "name": "surname",
+      "type": "string",
+      "accessors": [
+        "get",
+        "set",
+        "getAsync"
+      ]
+    },
+    {
+      "name": "address",
+      "type": "valueObject",
+      "class": "Books/Address",
+      "accessors": [
+        "get",
+        "set",
+        "getAsync"
+      ]
+    }
+  ]
+}
