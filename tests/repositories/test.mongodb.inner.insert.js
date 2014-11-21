@@ -3,7 +3,7 @@ var MongoDBSequence = require('./../../lib/repositories/MongoDBSequence');
 var MongoDBInner = require('./../../lib/repositories/MongoDBInner');
 var MongoClient = require('mongodb').MongoClient;
 var connectionManager = require('../../lib/services/ConnectionManager');
-
+var q = require('q');
 describe('Repositories, MongoDBInner: Insert', function() {
 
   var connection;
@@ -36,8 +36,8 @@ describe('Repositories, MongoDBInner: Insert', function() {
           }, null);
           return innerDriver.insert(2, {'val': 'bar'});
         }
-    ).then(function(doc) {
-          return connection.collection('coll_name').findOneAsync({'_id': 2});
+    ).then(function() {
+          return q.ninvoke(driver.getCollection(), 'findOne', {'_id': 2});
         }
     ).then(
         function(doc) {

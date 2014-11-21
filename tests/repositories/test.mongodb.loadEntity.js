@@ -51,16 +51,8 @@ describe('Repositories, MongoDB: loadEntity', function() {
     driver.setId(1);
     driver.getCollection = function() {
       return {
-        findOneAsync: function() {
-          return {
-            then: function(thenCallback) {
-              return {
-                catch: function(errorCalback) {
-                  errorCalback.call(driver, 'my-err');
-                }
-              };
-            }
-          };
+        findOne: function(query, callback) {
+          callback.call(driver, 'my-err');
         }
       };
     };
