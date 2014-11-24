@@ -1,4 +1,5 @@
 require('should');
+var Promise = require('bluebird');
 var MongoDB = require('./../../lib/repositories/MongoDB');
 var MongoClient = require('mongodb').MongoClient;
 var connectionManager = require('../../lib/services/ConnectionManager');
@@ -50,12 +51,8 @@ describe('Repositories, MongoDB: loadOneBy', function() {
   it('Load with mongodb Error', function(done) {
     var driver = new MongoDB({'collectionName': 'test_driver_ts'});
     driver.setId(1);
-    driver.getCollection = function() {
-      return {
-        findOne: function(data, callback) {
-          callback.call(driver, 'my-err');
-        }
-      };
+    driver.mongoDbFindOne = function(query) {
+      return Promise.reject('my-err');
     };
     driver.loadEntity().then(
         function(doc) {
