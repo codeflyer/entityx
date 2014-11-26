@@ -16,14 +16,14 @@ describe('Module init', function() {
       'entities': 'lib/entities',
       'valueObject': 'lib/entities/values',
       'repositories': 'lib/repositories',
-      'helpers': 'lib/helpers'
+      'services': 'lib/services'
     };
 
     var suffixes = {
       'entities': '',
       'valueObject': '',
       'repositories': 'Driver',
-      'helpers': 'Helper'
+      'services': 'Service'
     };
     try {
       var module = new Module();
@@ -41,14 +41,14 @@ describe('Module init', function() {
       'entities': 'new/entities',
       'valueObject': 'new/valueObject',
       'repositories': 'new/repositories',
-      'helpers': 'new/helpers'
+      'services': 'new/services'
     };
 
     var suffixes = {
       'entities': 'suffEntities',
       'valueObject': 'suffValueObject',
       'repositories': 'suffRepositories',
-      'helpers': 'suffHelpers'
+      'services': 'suffService'
     };
     try {
       var module = new Module();

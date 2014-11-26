@@ -5,7 +5,7 @@ var path = require('path');
 var EntityX = require('../lib/EntityX');
 var Factory = require('../lib/Factory');
 
-describe('Factory: getHelper', function() {
+describe('Factory: getService', function() {
   beforeEach(function() {
     EntityX._reset();
     EntityX.setApplicationRoot(path.join(__dirname));
@@ -13,28 +13,28 @@ describe('Factory: getHelper', function() {
     Factory.reset();
   });
 
-  it('Get helper (exists)', function() {
+  it('Get service (exists)', function() {
     try {
-      Factory.getHelper('TestModule/Foo', {});
+      Factory.getService('TestModule/Foo', {});
     } catch (e) {
       throw e;
     }
   });
 
-  it('Get helper (Module init, class not not exists)', function() {
+  it('Get service (Module init, class not not exists)', function() {
     (function() {
-      Factory.getHelper('TestModule/Inherit2', {});
+      Factory.getService('TestModule/Inherit2', {});
     }).should.throw(
-        'Class [TestModule/Inherit2] of type [helpers] not defined');
+        'Class [TestModule/Inherit2] of type [services] not defined');
   });
 
-  it('Set helper', function() {
+  it('Set service', function() {
     function injectedClass() {
       this.check = 'check';
     }
 
-    Factory.setHelper('TestModule/Injected', injectedClass);
-    var model = Factory.getHelper('TestModule/Injected');
+    Factory.setService('TestModule/Injected', injectedClass);
+    var model = Factory.getService('TestModule/Injected');
     model.check.should.be.equal('check');
   });
 });
