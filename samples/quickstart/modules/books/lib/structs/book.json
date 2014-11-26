@@ -1,0 +1,46 @@
+{
+  "module": "Books",
+  "className": "Book",
+  "collectionName": "books",
+  "useTimestamp" : true,
+  "timestampFlat" : false,
+  "driverType" : "MongoDBObjectID",
+  "attributes": [
+    {
+      "name": "title",
+      "type": "string",
+      "accessors": [
+        "get",
+        "set",
+        "getAsync"
+      ]
+    },
+    {
+      "name": "author",
+      "type": "string",
+      "accessors": [
+        "get",
+        "set",
+        "getAsync"
+      ]
+    },
+    {
+      "name": "publisher",
+      "type": "string",
+      "accessors": [
+        "get",
+        "set",
+        "getAsync"
+      ]
+    },
+    {
+      "name": "releaseDate",
+      "type": "date",
+      "accessors": [
+        "get",
+        "set",
+        "getAsync"
+      ]
+    }
+  ]
+}
