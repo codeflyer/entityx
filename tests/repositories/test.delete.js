@@ -7,6 +7,7 @@ var connectionManager = require('../../lib/services/ConnectionManager');
 var Q = require('q');
 
 describe('Driver operation: Delete', function() {
+  var fixtures;
   before(function(done) {
     var dbName = 'entityxTest';
     fixtures = require('pow-mongodb-fixtures').connect(dbName);
