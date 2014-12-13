@@ -11,8 +11,7 @@ describe('Entity: exists', function() {
 
   beforeEach(function() {
     EntityX._reset();
-    EntityX.setApplicationRoot(path.join(__dirname, '..'));
-    EntityX.addModule('classesTest');
+    EntityX.addModule(path.join(__dirname, '..', 'classesTest'));
   });
 
   it('exists == true', function(done) {

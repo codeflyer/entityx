@@ -9,8 +9,7 @@ describe('Object: load', function() {
 
   beforeEach(function() {
     EntityX._reset();
-    EntityX.setApplicationRoot(path.join(__dirname, '..'));
-    EntityX.addModule('classesTest');
+    EntityX.addModule(path.join(__dirname, '..', 'classesTest'));
   });
 
   it('check isLoad == false', function() {

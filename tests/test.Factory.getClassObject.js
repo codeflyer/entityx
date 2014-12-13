@@ -10,8 +10,7 @@ describe('FACTORY Factory: getClassObject', function() {
 
   beforeEach(function() {
     EntityX._reset();
-    EntityX.setApplicationRoot(path.join(__dirname));
-    EntityX.addModule('classesTest');
+    EntityX.addModule(path.join(__dirname, 'classesTest'));
     Factory.reset();
     sandbox = sinon.sandbox.create();
   });

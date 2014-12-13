@@ -4,15 +4,15 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-plato');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-mocha-istanbul')
+  grunt.loadNpmTasks('grunt-mocha-istanbul');
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
     jshint: {
       options: {
-        jshintrc : '.jshintrc',
-        force : true
+        jshintrc: '.jshintrc',
+        force: true
       },
       all: ['Gruntfile.js', 'lib/**/*.js', 'tests/**/*.js']
     },
@@ -24,7 +24,7 @@ module.exports = function(grunt) {
     },
     plato: {
       options: {
-        jshint:  grunt.file.readJSON('.jshintrc')
+        jshint: grunt.file.readJSON('.jshintrc')
       },
       main: {
         files: {
@@ -42,13 +42,13 @@ module.exports = function(grunt) {
       coveralls: {
         src: ['tests/**/*.js'], // multiple folders also works
         options: {
-          coverage:true,
+          coverage: true,
           check: {
             lines: 75,
             statements: 75
           },
           root: './lib',
-          reportFormats: ['cobertura','lcovonly', 'html']
+          reportFormats: ['cobertura', 'lcovonly', 'html']
         }
       }
     }

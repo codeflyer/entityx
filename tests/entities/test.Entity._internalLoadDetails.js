@@ -9,8 +9,7 @@ describe('Object: _internalLoadDetails', function() {
 
   beforeEach(function() {
     EntityX._reset();
-    EntityX.setApplicationRoot(path.join(__dirname, '..'));
-    EntityX.addModule('classesTest');
+    EntityX.addModule(path.join(__dirname, '..', 'classesTest'));
   });
 
   it('Check isLoad after loading', function(done) {

@@ -11,8 +11,7 @@ describe('Object: storeFields', function() {
 
   beforeEach(function() {
     EntityX._reset();
-    EntityX.setApplicationRoot(path.join(__dirname, '..'));
-    EntityX.addModule('classesTest');
+    EntityX.addModule(path.join(__dirname, '..', 'classesTest'));
   });
 
   it('storeField without fields set', function(done) {

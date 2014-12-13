@@ -8,8 +8,7 @@ describe('Entity: setDataEntity', function() {
 
   beforeEach(function() {
     EntityX._reset();
-    EntityX.setApplicationRoot(path.join(__dirname, '..'));
-    EntityX.addModule('classesTest');
+    EntityX.addModule(path.join(__dirname, '..', 'classesTest'));
   });
 
   it('Set data with an invalid doc', function() {

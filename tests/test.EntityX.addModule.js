@@ -10,33 +10,29 @@ describe('EntityX adding modules', function() {
   });
 
   it('Module exists and is valid', function() {
-    EntityX.setApplicationRoot(rootPath);
-    EntityX.addModule('tests/classesTest');
+    EntityX.addModule(path.join(rootPath, 'tests/classesTest'));
     EntityX.getModule('TestModule').name.should.be.equal('TestModule');
   });
 
   it('Module folder not exists', function() {
-    EntityX.setApplicationRoot(rootPath);
     (function() {
-      EntityX.addModule('tests/classesNotValid');
+      EntityX.addModule(path.join(rootPath, 'tests/classesNotValid'));
     }).should.throw('Module Path not found [' +
         rootPath + '/tests/classesNotValid]');
   });
 
   it('Config file not exists', function() {
-    EntityX.setApplicationRoot(rootPath);
     try {
-      EntityX.addModule('tests/classesTest/lib');
+      EntityX.addModule(path.join(rootPath, 'tests/classesTest/lib'));
     } catch (e) {
       e.code.should.be.equal(404);
     }
   });
 
   it('Module already registered', function() {
-    EntityX.setApplicationRoot(rootPath);
-    EntityX.addModule('tests/classesTest');
+    EntityX.addModule(path.join(rootPath, 'tests/classesTest'));
     try {
-      EntityX.addModule('tests/classesTest');
+      EntityX.addModule(path.join(rootPath, 'tests/classesTest'));
     } catch (e) {
       e.code.should.be.equal(100);
     }

@@ -3,12 +3,11 @@ var path = require('path');
 var EntityX = require('../../lib/EntityX');
 var CoreObject = require('./../../lib/entities/CoreObject');
 
-describe('Object: getData', function() {
+describe('Object: getData2', function() {
 
   beforeEach(function() {
     EntityX._reset();
-    EntityX.setApplicationRoot(path.join(__dirname, '..'));
-    EntityX.addModule('classesTest');
+    EntityX.addModule(path.join(__dirname, '..', 'classesTest'));
   });
 
   it('Get data not initialized', function() {

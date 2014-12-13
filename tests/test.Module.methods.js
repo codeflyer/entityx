@@ -1,9 +1,6 @@
-require('should');
-var path = require('path');
 var Module = require('../lib/Module');
 
 describe('Module methods', function() {
-  var rootPath = path.join(__dirname, '..');
 
   it('Check getname', function() {
     try {
@@ -15,17 +12,11 @@ describe('Module methods', function() {
     }
   });
 
-  it('Set and check application root', function() {
-    var module = new Module();
-    module.setApplicationRoot(rootPath);
-    module._applicationRoot.should.be.equal(rootPath);
-  });
-
   it('Set relative path', function() {
     try {
       var module = new Module();
-      module.setRelativePath('somePath');
-      module._relativePath.should.be.equal('somePath');
+      module.setAbsolutePath('somePath');
+      module._absolutePath.should.be.equal('somePath');
     } catch (e) {
       throw e;
     }
@@ -34,10 +25,9 @@ describe('Module methods', function() {
   it('get source class load path', function() {
     try {
       var module = new Module();
-      module.setApplicationRoot(rootPath);
-      module.setRelativePath('somePath');
+      module.setAbsolutePath('somePath');
       var sourceClass = module.getSourceClassLoadPath('entities', 'MyClass');
-      sourceClass.should.be.equal(rootPath + '/somePath/lib/entities/MyClass');
+      sourceClass.should.be.equal('somePath/lib/entities/MyClass');
     } catch (e) {
       throw e;
     }
@@ -46,8 +36,7 @@ describe('Module methods', function() {
   it('get source class load path with wrong type', function() {
     try {
       var module = new Module();
-      module.setApplicationRoot(rootPath);
-      module.setRelativePath('somePath');
+      module.setAbsolutePath('somePath');
       try {
         module.getSourceClassLoadPath('notexistenttype', 'MyClass');
         throw 'should trown an error';
