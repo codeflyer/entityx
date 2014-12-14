@@ -4,7 +4,7 @@ var EntityX = require('../../lib/EntityX');
 var Entity = require('./../../lib/entities/Entity');
 var EntityInherit = require('./../classesTest/lib/entities/EntityInherit');
 
-describe('Entity: setDataEntity', function() {
+describe('Entity: loadDataEntity', function() {
 
   beforeEach(function() {
     EntityX._reset();

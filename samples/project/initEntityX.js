@@ -22,8 +22,8 @@ MongoClient.connect('mongodb://127.0.0.1:27017/BookLibrary', function(err, db) {
   console.log(new Date());
   console.log('mongodb://127.0.0.1:27017/BookLibrary');
   if(err) {
-    console.err("Mongo connection error");
-    console.err(err);
+    console.error("Mongo connection error");
+    console.error(err);
     return;
   }
   
