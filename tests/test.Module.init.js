@@ -60,4 +60,44 @@ describe('Module init', function() {
       throw e;
     }
   });
+
+  it('Init with config empty', function() {
+    var paths = {
+      'entities': '',
+      'valueObject': '',
+      'repositories': '',
+      'services': ''
+    };
+
+    var suffixes = {
+      'entities': '',
+      'valueObject': '',
+      'repositories': '',
+      'services': ''
+    };
+
+    var defaultPaths = {
+      'entities': 'lib/entities',
+      'valueObject': 'lib/entities/values',
+      'repositories': 'lib/repositories',
+      'services': 'lib/services'
+    };
+
+    var defaultSuffixes = {
+      'entities': '',
+      'valueObject': '',
+      'repositories': 'Driver',
+      'services': 'Service'
+    };
+
+    try {
+      var module = new Module();
+      module._init({'name': 'ModName', paths: paths, suffixes: suffixes});
+      module.name.should.be.equal('ModName');
+      module.paths.should.be.eql(defaultPaths);
+      module.suffixes.should.be.eql(defaultSuffixes);
+    } catch (e) {
+      throw e;
+    }
+  });
 });

@@ -4,7 +4,7 @@ var MongoDB = require('./../../lib/repositories/MongoDB');
 var MongoClient = require('mongodb').MongoClient;
 var connectionManager = require('../../lib/services/ConnectionManager');
 
-describe('Repositories, MongoDB: loadOneBy', function() {
+describe('Repositories, MongoDB: loadBy', function() {
 
   before(function(done) {
     var dbName = 'entityxTest';
@@ -28,9 +28,22 @@ describe('Repositories, MongoDB: loadOneBy', function() {
     var driver = new MongoDB({'collectionName': 'test_driver_ts'});
     var query = {'_id' : 1};
     var projection = {};
-    driver.loadOneBy(query, projection).then(
-        function(doc) {
-          doc._id.should.be.equal(1);
+    driver.loadBy(query, projection).then(
+        function(docs) {
+          docs.should.be.instanceof(Array);
+          docs[0]._id.should.be.equal(1);
+          done();
+        }
+    );
+  });
+
+  it('Load with query initialized but with empty result', function(done) {
+    var driver = new MongoDB({'collectionName': 'test_driver_ts'});
+    var query = {'test' : 'testtest'};
+    var projection = {};
+    driver.loadBy(query, projection).then(
+        function(docs) {
+          docs.should.be.instanceof(Array).and.have.lengthOf(0);
           done();
         }
     );
@@ -38,9 +51,10 @@ describe('Repositories, MongoDB: loadOneBy', function() {
 
   it('Load with query and projection not set', function(done) {
     var driver = new MongoDB({'collectionName': 'test_driver_ts'});
-    driver.loadOneBy().then(
-        function(doc) {
-          doc._id.should.be.equal(1);
+    driver.loadBy().then(
+        function(docs) {
+          docs.should.be.instanceof(Array);
+          docs[0]._id.should.be.equal(1);
           done();
         }
     );
@@ -48,11 +62,10 @@ describe('Repositories, MongoDB: loadOneBy', function() {
 
   it('Load with mongodb Error', function(done) {
     var driver = new MongoDB({'collectionName': 'test_driver_ts'});
-    driver.setId(1);
-    driver.mongoDbFindOne = function(query) {
+    driver.mongoDbFindToArray = function(query) {
       return Promise.reject('my-err');
     };
-    driver.loadOneBy().then(
+    driver.loadBy().then(
         function(doc) {
           done('error');
         }

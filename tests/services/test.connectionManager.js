@@ -53,4 +53,23 @@ describe('ConnectionManager', function() {
       ConnectionManager.getConnection();
     }).should.throw('Default connection not initialized');
   });
+
+  it('Has connection not exists', function() {
+    ConnectionManager.addConnection('tempConn', 'mockconnection');
+    ConnectionManager.hasConnection('tmpConnection').should.be.false;
+  });
+
+  it('Has connection default not initialized', function() {
+    ConnectionManager.hasConnection().should.be.false;
+  });
+
+  it('Has connection true', function() {
+    ConnectionManager.addConnection('tempConn', 'mockconnection');
+    ConnectionManager.hasConnection('tempConn').should.be.true;
+  });
+
+  it('Has connection default true', function() {
+    ConnectionManager.addConnection('mockconnection');
+    ConnectionManager.hasConnection().should.be.true;
+  });
 });
