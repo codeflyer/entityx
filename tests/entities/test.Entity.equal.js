@@ -1,4 +1,3 @@
-require('should');
 var EntityInherit = require('./../classesTest/lib/entities/EntityInherit');
 var EntityInheritChild =
     require('./../classesTest/lib/entities/EntityInheritChild');

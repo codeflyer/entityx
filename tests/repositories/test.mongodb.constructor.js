@@ -1,4 +1,3 @@
-require('should');
 var MongoDBDriver = require('./../../lib/repositories/MongoDB');
 
 describe('Repositories, MongoDB: Constructor', function() {

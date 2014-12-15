@@ -1,4 +1,3 @@
-require('should');
 var CoreObjectInherit =
     require('./../classesTest/lib/entities/CoreObjectInherit');
 

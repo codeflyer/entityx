@@ -1,4 +1,3 @@
-require('should');
 var MongoDBSequence = require('./../../lib/repositories/MongoDBSequence');
 var MongoClient = require('mongodb').MongoClient;
 var connectionManager = require('../../lib/services/ConnectionManager');

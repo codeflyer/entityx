@@ -3,7 +3,6 @@ var Factory = require('../lib/Factory');
 var path = require('path');
 
 var sinon = require('sinon');
-require('should');
 
 describe('FACTORY Factory: getClassObject', function() {
   var sandbox;

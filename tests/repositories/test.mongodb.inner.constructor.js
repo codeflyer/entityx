@@ -1,4 +1,3 @@
-require('should');
 var ObjectID = require('mongodb').ObjectID;
 var MongoDBInner = require('./../../lib/repositories/MongoDBInner');
 

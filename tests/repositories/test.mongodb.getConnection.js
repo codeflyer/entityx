@@ -1,4 +1,3 @@
-require('should');
 var sinon = require('sinon');
 var MongoDBDriver = require('./../../lib/repositories/MongoDB');
 var connectionManager = require('../../lib/services/ConnectionManager');

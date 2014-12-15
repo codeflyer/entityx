@@ -1,8 +1,6 @@
 var EntityX = require('../lib/EntityX');
 var Factory = require('../lib/Factory');
 var path = require('path');
-require('should');
-
 describe('Factory: isModuleSet', function() {
 
   beforeEach(function() {

@@ -1,4 +1,3 @@
-require('should');
 var Promise = require('bluebird');
 var MongoDB = require('./../../lib/repositories/MongoDB');
 var MongoClient = require('mongodb').MongoClient;

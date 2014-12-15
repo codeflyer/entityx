@@ -1,4 +1,3 @@
-require('should');
 var Entity = require('./../../lib/entities/Entity');
 
 describe('Entity: Constructor', function() {

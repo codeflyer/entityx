@@ -1,4 +1,3 @@
-require('should');
 var sinon = require('sinon');
 
 var path = require('path');
@@ -8,6 +7,7 @@ var Factory = require('../../lib/Factory');
 var CoreObject = require('../../lib/entities/CoreObject');
 var Entity = require('../../lib/entities/Entity');
 var ValueObject = require('../../lib/entities/ValueObject');
+var errorCodes = require('../../lib/errorCodes');
 
 describe('Object: getDataForSave', function() {
 
@@ -22,7 +22,7 @@ describe('Object: getDataForSave', function() {
       model._getStructuredValueForSave('field1');
       throw 'should be thown an error';
     } catch (e) {
-      e.should.be.eql(new ErrorX(500, 'INTERFACE not inherithed'));
+      e.code.should.be.equal(errorCodes.INTERFACE_NOT_INHERITED);
     }
   });
 

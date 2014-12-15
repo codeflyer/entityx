@@ -1,4 +1,3 @@
-require('should');
 var Factory = require('../lib/Factory');
 var path = require('path');
 var MongoClient = require('mongodb').MongoClient;

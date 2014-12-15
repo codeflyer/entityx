@@ -1,4 +1,3 @@
-require('should');
 var MongoDBInner = require('./../../lib/repositories/MongoDBInner');
 var MongoClient = require('mongodb').MongoClient;
 var connectionManager = require('../../lib/services/ConnectionManager');

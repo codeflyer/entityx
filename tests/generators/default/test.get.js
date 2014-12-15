@@ -1,4 +1,3 @@
-require('should');
 var generatorGet = require('../../../lib/generators/code/default/getAsync');
 
 describe('Generators code default get', function() {

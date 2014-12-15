@@ -1,4 +1,3 @@
-require('should');
 delete require.cache[require.resolve('./../../lib/services/ConnectionManager')];
 var ConnectionManager = require('./../../lib/services/ConnectionManager');
 

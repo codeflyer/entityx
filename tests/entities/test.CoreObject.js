@@ -1,5 +1,4 @@
-require('should');
-var CoreObject = require('./../../lib/entities/CoreObject');
+var CoreObject = require('../../lib/entities/CoreObject');
 
 describe('Object', function() {
   it('Empty object', function() {

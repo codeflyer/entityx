@@ -1,7 +1,7 @@
-require('should');
 var path = require('path');
 var EntityX = require('../../lib/EntityX');
 var Factory = require('../../lib/Factory');
+var errorCodes = require('../../lib/errorCodes');
 var sinon = require('sinon');
 var Q = require('q');
 
@@ -10,6 +10,16 @@ describe('Object: load', function() {
   beforeEach(function() {
     EntityX._reset();
     EntityX.addModule(path.join(__dirname, '..', 'classesTest'));
+  });
+
+  it('_loadDetails', function() {
+    var obj = Factory.getEntity('TestModule/EntityInheritNoInteface', 1);
+    try {
+      obj._loadDetails();
+      throw new Error('should be thrown');
+    } catch (e) {
+      e.code.should.be.equal(errorCodes.INTERFACE_NOT_INHERITED);
+    }
   });
 
   it('check isLoad == false', function() {

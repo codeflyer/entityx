@@ -1,4 +1,3 @@
-require('should');
 var ObjectID = require('mongodb').ObjectID;
 var MongoDBSequence = require('./../../lib/repositories/MongoDBSequence');
 

@@ -1,4 +1,3 @@
-require('should');
 var InheritDriver = require('./../classesTest/lib/repositories/InheritDriver');
 var InheritNoTsDriver =
     require('./../classesTest/lib/repositories/InheritNoTsDriver');

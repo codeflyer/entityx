@@ -5,6 +5,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-mocha-istanbul');
+  grunt.loadNpmTasks('grunt-mocha-test');
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -40,7 +41,7 @@ module.exports = function(grunt) {
     // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
     mocha_istanbul: {
       coveralls: {
-        src: ['tests/**/*.js'], // multiple folders also works
+        src: ['tests/index.js', 'tests/**/*.js'], // multiple folders also works
         options: {
           coverage: true,
           check: {
@@ -51,9 +52,22 @@ module.exports = function(grunt) {
           reportFormats: ['cobertura', 'lcovonly', 'html']
         }
       }
+    },
+    mochaTest: {
+      test: {
+        options: {
+          reporter: 'spec',
+          quiet: false, // Optionally suppress output to standard out (defaults to false)
+          clearRequireCache: false, // Optionally clear the require cache before running tests (defaults to false)
+          require: 'tests/index.js'
+        },
+        src: ['tests/**/test.*.js']
+      }
     }
   });
 
   grunt.registerTask('default', ['jshint', 'jscs']);
+  grunt.registerTask('test', ['mochaTest']);
+  grunt.registerTask('cover', ['mocha_istanbul']);
 }
 ;

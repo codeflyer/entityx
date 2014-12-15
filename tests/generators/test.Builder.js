@@ -1,4 +1,3 @@
-require('should');
 var util = require('util');
 var Entity = require('../../lib/entities/Entity');
 var Builder = require('../../lib/generators/Builder');

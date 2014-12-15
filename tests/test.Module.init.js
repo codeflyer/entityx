@@ -1,4 +1,3 @@
-require('should');
 var Module = require('../lib/Module');
 
 describe('Module init', function() {

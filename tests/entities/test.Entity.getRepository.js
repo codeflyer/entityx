@@ -1,4 +1,3 @@
-require('should');
 var sinon = require('sinon');
 
 var path = require('path');

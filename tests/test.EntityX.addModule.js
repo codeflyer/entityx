@@ -1,4 +1,3 @@
-require('should');
 var EntityX = require('../lib/EntityX');
 var path = require('path');
 
