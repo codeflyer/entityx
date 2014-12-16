@@ -27,8 +27,10 @@ describe('Repositories, MongoDBInner: Insert', function() {
 
   it('Insert new', function(done) {
     var driver = new MongoDBSequence({'collectionName': 'coll_name'}, null);
+
     driver.insert({'test': 'foo'}).then(
         function(doc) {
+
           var innerDriver = new MongoDBInner({
             'collectionName': 'coll_name',
             'innerFieldName': 'list'

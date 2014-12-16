@@ -1,5 +1,5 @@
 var sinon = require('sinon');
-var MongoDBDriver = require('./../../lib/repositories/MongoDB');
+var MongoDBDriver = require('./../../lib/repositories/MongoDBAbstractDriver');
 var connectionManager = require('../../lib/services/ConnectionManager');
 
 describe('Repositories, MongoDB: getConnection', function() {

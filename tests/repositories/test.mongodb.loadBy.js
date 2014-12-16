@@ -1,7 +1,9 @@
 var Promise = require('bluebird');
-var MongoDB = require('./../../lib/repositories/MongoDB');
+var ErrorX = require('ErrorX');
+var MongoDB = require('./../../lib/repositories/MongoDBAbstractDriver');
 var MongoClient = require('mongodb').MongoClient;
 var connectionManager = require('../../lib/services/ConnectionManager');
+var errorCodes = require('../../lib/errorCodes');
 
 describe('Repositories, MongoDB: loadBy', function() {
 
@@ -25,7 +27,7 @@ describe('Repositories, MongoDB: loadBy', function() {
 
   it('Load with query initialized', function(done) {
     var driver = new MongoDB({'collectionName': 'test_driver_ts'});
-    var query = {'_id' : 1};
+    var query = {'_id': 1};
     var projection = {};
     driver.loadBy(query, projection).then(
         function(docs) {
@@ -38,7 +40,7 @@ describe('Repositories, MongoDB: loadBy', function() {
 
   it('Load with query initialized but with empty result', function(done) {
     var driver = new MongoDB({'collectionName': 'test_driver_ts'});
-    var query = {'test' : 'testtest'};
+    var query = {'test': 'testtest'};
     var projection = {};
     driver.loadBy(query, projection).then(
         function(docs) {
@@ -62,16 +64,17 @@ describe('Repositories, MongoDB: loadBy', function() {
   it('Load with mongodb Error', function(done) {
     var driver = new MongoDB({'collectionName': 'test_driver_ts'});
     driver.mongoDbFindToArray = function(query) {
-      return Promise.reject('my-err');
+      return Promise.reject(
+          new ErrorX(errorCodes.REPOSITORY_OPERATION_ERROR, 'my-err'));
     };
     driver.loadBy().then(
         function(doc) {
           done('error');
         }
     ).catch(function(err) {
-          err.code.should.be.equal(500);
-          err.message.should.be.equal('MongoDb error');
-          err.parentError.should.be.equal('my-err');
+          err.code.should.be.equal(errorCodes.REPOSITORY_OPERATION_ERROR);
+          err.message.should.be.equal('Error on loadBy');
+          err.parentError.message.should.be.equal('my-err');
           done();
         });
   });

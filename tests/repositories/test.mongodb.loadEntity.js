@@ -1,7 +1,9 @@
 var Promise = require('bluebird');
-var MongoDB = require('./../../lib/repositories/MongoDB');
+var ErrorX = require('ErrorX');
+var MongoDB = require('./../../lib/repositories/MongoDBAbstractDriver');
 var MongoClient = require('mongodb').MongoClient;
 var connectionManager = require('../../lib/services/ConnectionManager');
+var errorCodes = require('../../lib/errorCodes');
 
 describe('Repositories, MongoDB: loadEntity', function() {
 
@@ -41,7 +43,7 @@ describe('Repositories, MongoDB: loadEntity', function() {
           done('error');
         }
     ).catch(function(err) {
-          err.code.should.be.equal(412);
+          err.code.should.be.equal(errorCodes.REPOSITORY_NOT_INIT);
           done();
         });
   });
@@ -50,16 +52,18 @@ describe('Repositories, MongoDB: loadEntity', function() {
     var driver = new MongoDB({'collectionName': 'test_driver_ts'});
     driver.setId(1);
     driver.mongoDbFindOne = function(query) {
-      return Promise.reject('my-err');
+      return Promise.reject(
+          new ErrorX(errorCodes.REPOSITORY_OPERATION_ERROR, 'my-err'));
+
     };
     driver.loadEntity().then(
         function(doc) {
           done('error');
         }
     ).catch(function(err) {
-          err.code.should.be.equal(500);
-          err.message.should.be.equal('MongoDb error');
-          err.parentError.should.be.equal('my-err');
+          err.code.should.be.equal(errorCodes.REPOSITORY_OPERATION_ERROR);
+          err.message.should.be.equal('Error on load entity operation');
+          err.parentError.message.should.be.equal('my-err');
           done();
         });
   });

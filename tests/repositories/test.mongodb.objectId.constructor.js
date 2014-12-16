@@ -1,5 +1,6 @@
 var ObjectID = require('mongodb').ObjectID;
 var MongoDBObjectID = require('./../../lib/repositories/MongoDBObjectID');
+var errorCodes = require('./../../lib/errorCodes');
 
 describe('Repositories, MongoDBObjectID: Constructor', function() {
 
@@ -20,10 +21,15 @@ describe('Repositories, MongoDBObjectID: Constructor', function() {
   });
 
   it('Identifier string (not valid)', function() {
-    (function() {
+    try {
+
       new MongoDBObjectID({'collectionName': 'coll_name'}, 'hello');
-    }).should.throw('Error: Argument passed in must be a single String of ' +
-        '12 bytes or a string of 24 hex characters');
+    } catch (e) {
+      e.code.should.be.equal(errorCodes.INVALID_PARAMS);
+      e.parentError.message.should.be.equal(
+          'Argument passed in must be a single String of ' +
+          '12 bytes or a string of 24 hex characters');
+    }
   });
 
   it('Identifier integer', function() {

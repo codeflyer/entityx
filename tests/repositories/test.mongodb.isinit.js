@@ -1,4 +1,4 @@
-var MongoDBDriver = require('./../../lib/repositories/MongoDB');
+var MongoDBDriver = require('./../../lib/repositories/MongoDBAbstractDriver');
 
 describe('Repositories, MongoDB: isInit', function() {
 
