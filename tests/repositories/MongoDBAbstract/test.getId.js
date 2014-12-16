@@ -1,6 +1,7 @@
-var MongoDBDriver = require('./../../lib/repositories/MongoDBAbstractDriver');
+var MongoDBDriver =
+    require('./../../../lib/repositories/MongoDBAbstractDriver');
 
-describe('Repositories, MongoDB: isInit', function() {
+describe('Repositories, MongoDBAbstract: getId', function() {
 
   it('isInit == false', function() {
     var driver;
@@ -16,14 +17,11 @@ describe('Repositories, MongoDB: isInit', function() {
 
   it('isInit == false', function() {
     var driver;
-    (function() {
-      driver = new MongoDBDriver({
-        'useTimestamp': false,
-        'collectionName': 'coll_name'
-      });
-    }).should.not.throw();
-
+    driver = new MongoDBDriver({
+      'useTimestamp': false,
+      'collectionName': 'coll_name'
+    });
     driver.setId(1);
-    driver.isInit().should.be.true;
+    driver.getId().should.be.equal(1);
   });
 });

@@ -1,11 +1,11 @@
 var Promise = require('bluebird');
-var ErrorX = require('ErrorX');
-var MongoDB = require('./../../lib/repositories/MongoDBAbstractDriver');
+var ErrorX = require('codeflyer-errorx');
+var MongoDB = require('./../../../lib/repositories/MongoDBAbstractDriver');
 var MongoClient = require('mongodb').MongoClient;
-var connectionManager = require('../../lib/services/ConnectionManager');
-var errorCodes = require('../../lib/errorCodes');
+var connectionManager = require('../../../lib/services/ConnectionManager');
+var errorCodes = require('../../../lib/errorCodes');
 
-describe('Repositories, MongoDB: loadOneBy', function() {
+describe('Repositories, MongoDBAbstract: loadOneBy', function() {
 
   before(function(done) {
     var dbName = 'entityxTest';
@@ -21,7 +21,7 @@ describe('Repositories, MongoDB: loadOneBy', function() {
 
   beforeEach(function(done) {
     fixtures.clear(function() {
-      fixtures.load(__dirname + './../fixtures/driverTs.js', done);
+      fixtures.load(__dirname + './../../fixtures/driverTs.js', done);
     });
   });
 

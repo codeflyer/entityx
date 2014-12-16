@@ -2,7 +2,7 @@ var sinon = require('sinon');
 
 var path = require('path');
 var Promise = require('bluebird');
-var ErrorX = require('ErrorX');
+var ErrorX = require('codeflyer-errorx');
 var EntityX = require('../../lib/EntityX');
 var Entity = require('../../lib/entities/Entity');
 

@@ -1,6 +1,6 @@
 var sinon = require('sinon');
-var MongoDBDriver = require('./../../lib/repositories/MongoDBAbstractDriver');
-var connectionManager = require('../../lib/services/ConnectionManager');
+var MongoDBDriver = require('./../../../lib/repositories/MongoDB');
+var connectionManager = require('../../../lib/services/ConnectionManager');
 
 describe('Repositories, MongoDB: getConnection', function() {
   var sandbox;
@@ -15,7 +15,6 @@ describe('Repositories, MongoDB: getConnection', function() {
 
   it('Get default connection', function() {
     var driver = new MongoDBDriver({
-      'useTimestamp': true,
       'collectionName': 'coll_name'
     });
 
@@ -28,7 +27,6 @@ describe('Repositories, MongoDB: getConnection', function() {
 
   it('Get default connection', function() {
     var driver = new MongoDBDriver({
-      'useTimestamp': true,
       'collectionName': 'coll_name',
       'connectionName': 'my-connection'
     });

@@ -1,7 +1,7 @@
 var sinon = require('sinon');
 
 var path = require('path');
-var ErrorX = require('ErrorX');
+var ErrorX = require('codeflyer-errorx');
 var EntityX = require('../../lib/EntityX');
 var Factory = require('../../lib/Factory');
 var CoreObject = require('../../lib/entities/CoreObject');
