@@ -78,6 +78,17 @@ describe('Repositories, MongoDBAbstract Delete', function() {
     );
   });
 
+  it('Delete no initialized', function(done) {
+    var driver = new InheritNoTsDriver();
+    driver.delete().then(function() {
+      done('should thrown an error');
+    }).catch(function(err) {
+          err.code.should.be.equal(errorCodes.REPOSITORY_NOT_INIT);
+          done();
+        }
+    );
+  });
+
   it('Delete no TS with error', function(done) {
     var driver = new InheritNoTsDriver(4);
     driver.mongoDbRemove = function(query, options) {

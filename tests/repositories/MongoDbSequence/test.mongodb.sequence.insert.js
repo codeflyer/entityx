@@ -1,6 +1,6 @@
-var MongoDBSequence = require('./../../lib/repositories/MongoDBSequence');
+var MongoDBSequence = require('./../../../lib/repositories/MongoDBSequence');
 var MongoClient = require('mongodb').MongoClient;
-var connectionManager = require('../../lib/services/ConnectionManager');
+var connectionManager = require('../../../lib/services/ConnectionManager');
 
 describe('Repositories, MongoDBSequence: Insert', function() {
 
@@ -18,7 +18,7 @@ describe('Repositories, MongoDBSequence: Insert', function() {
 
   beforeEach(function(done) {
     fixtures.clear(function() {
-      fixtures.load(__dirname + './../fixtures/onlySequence.js', done);
+      fixtures.load(__dirname + './../../fixtures/onlySequence.js', done);
     });
   });
 
