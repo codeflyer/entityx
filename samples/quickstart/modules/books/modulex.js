@@ -4,12 +4,12 @@ module.exports = {
     'entities': 'lib/entities',
     'valueObject': 'lib/entities/values',
     'repositories': 'lib/repositories',
-    'helpers': 'lib/helpers'
+    'services': 'lib/services'
   },
   suffixes: {
     'entities': '',
     'valueObject': '',
     'repositories': 'Driver',
-    'helpers': 'Helper'
+    'services': 'Service'
   }
 };
