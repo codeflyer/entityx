@@ -21,7 +21,7 @@ describe('Repositories, MongoDBAbstract: loadOneBy', function() {
   });
 
   beforeEach(function(done) {
-    fixtures.clear(function() {
+    connectionManager.getConnection().dropDatabase(function() {
       fixtures.load(__dirname + './../../fixtures/driverTs.js', done);
     });
   });

@@ -26,7 +26,7 @@ describe('Repositories, MongoDBAbstract Delete', function() {
   });
 
   beforeEach(function(done) {
-    fixtures.clear(function() {
+    connectionManager.getConnection().dropDatabase(function() {
       fixtures.load(__dirname + './../../fixtures/driverNoTs.js', function() {
         fixtures.load(__dirname + './../../fixtures/driverTs.js', done);
       });

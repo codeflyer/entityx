@@ -18,7 +18,7 @@ describe('Repositories, MongoDBObjectID: Insert', function() {
   });
 
   beforeEach(function(done) {
-    fixtures.clear(function() {
+    connectionManager.getConnection().dropDatabase(function() {
       done();
     });
   });

@@ -20,7 +20,7 @@ describe('Repositories, MongoDBInner: Insert', function() {
   });
 
   beforeEach(function(done) {
-    fixtures.clear(function() {
+    connectionManager.getConnection().dropDatabase(function() {
       fixtures.load(__dirname + './../fixtures/onlySequence.js', done);
     });
   });

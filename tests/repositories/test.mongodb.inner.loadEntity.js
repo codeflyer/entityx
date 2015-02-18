@@ -20,7 +20,7 @@ describe('Repositories, MongoDBInner: Load details', function() {
   });
 
   beforeEach(function(done) {
-    fixtures.clear(function() {
+    connectionManager.getConnection().dropDatabase(function() {
       fixtures.load(__dirname + './../fixtures/driverInner.js', done);
     });
   });
