@@ -13,4 +13,6 @@ It allows the arrangement of the code in modules and provides a Factory object b
 
 A first documentation draft can be found on gitbook:
 
-https://www.gitbook.com/content/book/codeflyer/entityx/
+* [Documentation Draft](https://www.gitbook.com/content/book/codeflyer/entityx/)
+
+
