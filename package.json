@@ -1,6 +1,6 @@
 {
   "name": "entityx",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "A framework for the management of DDD models",
   "main": "lib/index.js",
   "scripts": {
@@ -20,6 +20,7 @@
   "dependencies": {
     "bluebird": "^2.2.2",
     "codeflyer-errorx": "^0.1.2",
+    "connection-store": "^1.0.0",
     "mongodb": "^1.4.22",
     "q": "^1.0.1"
   },

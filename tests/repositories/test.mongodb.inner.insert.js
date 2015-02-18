@@ -1,7 +1,7 @@
+var connectionManager = require('connection-store');
+var MongoClient = require('mongodb').MongoClient;
 var MongoDBSequence = require('./../../lib/repositories/MongoDBSequence');
 var MongoDBInner = require('./../../lib/repositories/MongoDBInner');
-var MongoClient = require('mongodb').MongoClient;
-var connectionManager = require('../../lib/services/ConnectionManager');
 var q = require('q');
 describe('Repositories, MongoDBInner: Insert', function() {
 

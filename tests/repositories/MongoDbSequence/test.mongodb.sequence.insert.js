@@ -1,6 +1,6 @@
 var MongoDBSequence = require('./../../../lib/repositories/MongoDBSequence');
 var MongoClient = require('mongodb').MongoClient;
-var connectionManager = require('../../../lib/services/ConnectionManager');
+var connectionManager = require('connection-store');
 
 describe('Repositories, MongoDBSequence: Insert', function() {
 

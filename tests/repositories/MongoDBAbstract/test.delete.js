@@ -1,5 +1,7 @@
 var Promise = require('bluebird');
 var ErrorX = require('codeflyer-errorx');
+var MongoClient = require('mongodb').MongoClient;
+var connectionManager = require('connection-store');
 
 var InheritDriver =
     require('./../../classesTest/lib/repositories/InheritDriver');
@@ -7,8 +9,6 @@ var InheritFlatDriver =
     require('./../../classesTest/lib/repositories/InheritFlatDriver');
 var InheritNoTsDriver =
     require('./../../classesTest/lib/repositories/InheritNoTsDriver');
-var MongoClient = require('mongodb').MongoClient;
-var connectionManager = require('../../../lib/services/ConnectionManager');
 var errorCodes = require('../../../lib/errorCodes');
 
 describe('Repositories, MongoDBAbstract Delete', function() {

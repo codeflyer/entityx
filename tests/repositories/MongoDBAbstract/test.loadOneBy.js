@@ -1,8 +1,9 @@
 var Promise = require('bluebird');
 var ErrorX = require('codeflyer-errorx');
-var MongoDB = require('./../../../lib/repositories/MongoDBAbstractDriver');
 var MongoClient = require('mongodb').MongoClient;
-var connectionManager = require('../../../lib/services/ConnectionManager');
+var connectionManager = require('connection-store');
+
+var MongoDB = require('./../../../lib/repositories/MongoDBAbstractDriver');
 var errorCodes = require('../../../lib/errorCodes');
 
 describe('Repositories, MongoDBAbstract: loadOneBy', function() {

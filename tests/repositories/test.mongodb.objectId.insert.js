@@ -1,7 +1,7 @@
 var ObjectID = require('mongodb').ObjectID;
-var MongoDBObjectID = require('./../../lib/repositories/MongoDBObjectID');
 var MongoClient = require('mongodb').MongoClient;
-var connectionManager = require('../../lib/services/ConnectionManager');
+var connectionManager = require('connection-store');
+var MongoDBObjectID = require('./../../lib/repositories/MongoDBObjectID');
 
 describe('Repositories, MongoDBObjectID: Insert', function() {
 

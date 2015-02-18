@@ -1,11 +1,12 @@
+var MongoClient = require('mongodb').MongoClient;
+var connectionManager = require('connection-store');
+
 var InheritDriver =
     require('./../../classesTest/lib/repositories/InheritDriver');
 var InheritFlatDriver =
     require('./../../classesTest/lib/repositories/InheritFlatDriver');
 var InheritNoTsDriver =
     require('./../../classesTest/lib/repositories/InheritNoTsDriver');
-var MongoClient = require('mongodb').MongoClient;
-var connectionManager = require('../../../lib/services/ConnectionManager');
 
 describe('Repositories, MongoDBAbstract Timestamp', function() {
   var fixtures;
