@@ -1,4 +1,4 @@
-entityx
+Node.js EntityX
 =======
 
 # Introduction
