@@ -19,10 +19,9 @@ describe('Repositories, MongoDB: getConnection', function() {
     });
 
     var getConnectionStub = sandbox.stub(connectionManager, 'getConnection');
-    getConnectionStub.returns(null);
     driver.getConnection();
     getConnectionStub.calledOnce.should.be.true;
-    getConnectionStub.calledWith(undefined).should.be.true;
+    getConnectionStub.calledWith().should.be.true;
   });
 
   it('Get default connection', function() {
