@@ -22,8 +22,7 @@ describe('Repositories, MongoDB: findAndModify', function() {
     var u = {$set: {name: 'hello'}};
     var o = {};
     var e = null;
-    var d = {'doc' : 'a'};
-    var r = {'result' : 1};
+    var d = {'ok' : 1, value: 'b'};
 
     driver.getCollection = function() {
       return {
@@ -32,14 +31,14 @@ describe('Repositories, MongoDB: findAndModify', function() {
           sort.should.be.eql(s);
           update.should.be.eql(u);
           options.should.be.eql(o);
-          cb(e, d, r);
+          cb(e, d);
         }
       };
     };
 
     driver.mongoDbFindAndModify(q, s, u, o)
         .then(function(result) {
-          result.should.be.eql(r);
+          result.should.be.eql(d);
           done();
         });
   });
@@ -54,7 +53,6 @@ describe('Repositories, MongoDB: findAndModify', function() {
     var o = {};
     var e = 'error';
     var d = {'doc' : 'a'};
-    var r = {'result' : 1};
 
     driver.getCollection = function() {
       return {
@@ -63,13 +61,13 @@ describe('Repositories, MongoDB: findAndModify', function() {
           sort.should.be.eql(s);
           update.should.be.eql(u);
           options.should.be.eql(o);
-          cb(e, d, r);
+          cb(e, d);
         }
       };
     };
 
     driver.mongoDbFindAndModify(q, s, u, o)
-        .then(function(result) {
+        .then(function() {
           done('should thrown an error');
         }).catch(function(err) {
           err.code.should.be.equal(errorCodes.REPOSITORY_OPERATION_ERROR);
